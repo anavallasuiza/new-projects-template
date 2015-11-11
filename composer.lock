@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "5c6026b96e6fa11a641b51a6ba976f5e",
-    "content-hash": "5bd58fd976f1ee3e9611bc37c006ec46",
+    "hash": "025356ecbe2aefbea0836febb0ecf8f9",
+    "content-hash": "d64530c21e41047b1bae18aaeffa1316",
     "packages": [
         {
             "name": "classpreloader/classpreloader",
@@ -216,6 +216,299 @@
                 "string"
             ],
             "time": "2015-11-06 14:35:42"
+        },
+        {
+            "name": "eusonlito/laravel-gettext",
+            "version": "v1.0.4",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/eusonlito/laravel-Gettext.git",
+                "reference": "db5e0be4d77c9cf4248f68217c3d3046d7adf255"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/eusonlito/laravel-Gettext/zipball/db5e0be4d77c9cf4248f68217c3d3046d7adf255",
+                "reference": "db5e0be4d77c9cf4248f68217c3d3046d7adf255",
+                "shasum": ""
+            },
+            "require": {
+                "gettext/gettext": "3.*",
+                "php": ">=5.3"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Eusonlito\\LaravelGettext\\": "src/Eusonlito/LaravelGettext/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Lito",
+                    "email": "lito@eordes.com"
+                }
+            ],
+            "description": "Simple gettext loader and parser",
+            "keywords": [
+                "gettext",
+                "laravel"
+            ],
+            "time": "2015-08-21 17:54:28"
+        },
+        {
+            "name": "eusonlito/laravel-meta",
+            "version": "v2.0.8",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/eusonlito/laravel-Meta.git",
+                "reference": "52082f6bf97677d7c8a8daec865ffee534f5e98d"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/eusonlito/laravel-Meta/zipball/52082f6bf97677d7c8a8daec865ffee534f5e98d",
+                "reference": "52082f6bf97677d7c8a8daec865ffee534f5e98d",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.4"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "*"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Eusonlito\\LaravelMeta\\": "src/Eusonlito/LaravelMeta/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Lito",
+                    "email": "lito@eordes.com"
+                }
+            ],
+            "description": "A package to manage Header Meta Tags",
+            "keywords": [
+                "head",
+                "laravel",
+                "meta",
+                "tags"
+            ],
+            "time": "2015-08-22 18:47:37"
+        },
+        {
+            "name": "eusonlito/laravel-packer",
+            "version": "v2.0.6",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/eusonlito/laravel-Packer.git",
+                "reference": "9fbf9e4df487bc29699cc08da0332eaa8ae431ac"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/eusonlito/laravel-Packer/zipball/9fbf9e4df487bc29699cc08da0332eaa8ae431ac",
+                "reference": "9fbf9e4df487bc29699cc08da0332eaa8ae431ac",
+                "shasum": ""
+            },
+            "require": {
+                "imagecow/imagecow": "*",
+                "php": ">=5.4"
+            },
+            "require-dev": {
+                "mikey179/vfsstream": "*",
+                "phpunit/phpunit": "*"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Eusonlito\\LaravelPacker\\": "src/Eusonlito/LaravelPacker/"
+                },
+                "classmap": [
+                    "src/Eusonlito/LaravelPacker/Processors/"
+                ],
+                "files": [
+                    "src/Eusonlito/LaravelPacker/Exceptions.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Lito",
+                    "email": "lito@eordes.com"
+                }
+            ],
+            "description": "A package for pack css and javascript files",
+            "keywords": [
+                "laravel",
+                "minify",
+                "packer"
+            ],
+            "time": "2015-09-24 14:56:11"
+        },
+        {
+            "name": "gettext/gettext",
+            "version": "v3.5.5",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/oscarotero/Gettext.git",
+                "reference": "8d363950369a22dd6087774b1bcac5e63299c43d"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/oscarotero/Gettext/zipball/8d363950369a22dd6087774b1bcac5e63299c43d",
+                "reference": "8d363950369a22dd6087774b1bcac5e63299c43d",
+                "shasum": ""
+            },
+            "require": {
+                "gettext/languages": "2.*",
+                "php": ">=5.3.0"
+            },
+            "require-dev": {
+                "illuminate/view": "*",
+                "phpunit/phpunit": "~4.0",
+                "twig/extensions": "*",
+                "twig/twig": "*"
+            },
+            "suggest": {
+                "illuminate/view": "Is necessary if you want to use the Blade extractor",
+                "twig/extensions": "Is necessary if you want to use the Twig extractor",
+                "twig/twig": "Is necessary if you want to use the Twig extractor"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Gettext\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Oscar Otero",
+                    "email": "oom@oscarotero.com",
+                    "homepage": "http://oscarotero.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "PHP gettext manager",
+            "homepage": "https://github.com/oscarotero/Gettext",
+            "keywords": [
+                "JS",
+                "gettext",
+                "i18n",
+                "mo",
+                "po",
+                "translation"
+            ],
+            "time": "2015-11-11 09:46:53"
+        },
+        {
+            "name": "gettext/languages",
+            "version": "2.1.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/mlocati/cldr-to-gettext-plural-rules.git",
+                "reference": "c43ade7e3fb68bcf2379036513dce8d20553d9c8"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/mlocati/cldr-to-gettext-plural-rules/zipball/c43ade7e3fb68bcf2379036513dce8d20553d9c8",
+                "reference": "c43ade7e3fb68bcf2379036513dce8d20553d9c8",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Gettext\\Languages\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Michele Locati",
+                    "email": "mlocati@gmail.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "gettext languages with plural rules",
+            "homepage": "https://github.com/mlocati/cldr-to-gettext-plural-rules",
+            "keywords": [
+                "cldr",
+                "i18n",
+                "internationalization",
+                "l10n",
+                "language",
+                "languages",
+                "localization",
+                "php",
+                "plural",
+                "plural rules",
+                "plurals",
+                "translate",
+                "translations",
+                "unicode"
+            ],
+            "time": "2015-03-27 11:32:41"
+        },
+        {
+            "name": "imagecow/imagecow",
+            "version": "v1.5.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/oscarotero/imagecow.git",
+                "reference": "8e429a08b600a3d895b1591cd1486e7b85c16009"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/oscarotero/imagecow/zipball/8e429a08b600a3d895b1591cd1486e7b85c16009",
+                "reference": "8e429a08b600a3d895b1591cd1486e7b85c16009",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Imagecow\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Oscar Otero",
+                    "email": "oom@oscarotero.com",
+                    "homepage": "http://oscarotero.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "PHP library to manipulate and generate responsive images",
+            "homepage": "https://github.com/oscarotero/imagecow/",
+            "keywords": [
+                "image"
+            ],
+            "time": "2015-09-07 21:30:06"
         },
         {
             "name": "jakub-onderka/php-console-color",
@@ -1726,6 +2019,60 @@
     ],
     "packages-dev": [
         {
+            "name": "barryvdh/laravel-debugbar",
+            "version": "v2.0.6",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/barryvdh/laravel-debugbar.git",
+                "reference": "23672cbbe78278ff1fdb258caa0b1de7b5d0bc0c"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/barryvdh/laravel-debugbar/zipball/23672cbbe78278ff1fdb258caa0b1de7b5d0bc0c",
+                "reference": "23672cbbe78278ff1fdb258caa0b1de7b5d0bc0c",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/support": "~5.0.17|5.1.*",
+                "maximebf/debugbar": "~1.10.2",
+                "php": ">=5.4.0",
+                "symfony/finder": "~2.6"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.1-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Barryvdh\\Debugbar\\": "src/"
+                },
+                "files": [
+                    "src/helpers.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Barry vd. Heuvel",
+                    "email": "barryvdh@gmail.com"
+                }
+            ],
+            "description": "PHP Debugbar integration for Laravel",
+            "keywords": [
+                "debug",
+                "debugbar",
+                "laravel",
+                "profiler",
+                "webprofiler"
+            ],
+            "time": "2015-09-09 11:39:27"
+        },
+        {
             "name": "doctrine/instantiator",
             "version": "1.0.5",
             "source": {
@@ -1875,6 +2222,62 @@
                 "test"
             ],
             "time": "2015-05-11 14:41:42"
+        },
+        {
+            "name": "maximebf/debugbar",
+            "version": "v1.10.5",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/maximebf/php-debugbar.git",
+                "reference": "30e53e8a28284b69dd223c9f5ee8957befd72636"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/maximebf/php-debugbar/zipball/30e53e8a28284b69dd223c9f5ee8957befd72636",
+                "reference": "30e53e8a28284b69dd223c9f5ee8957befd72636",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0",
+                "psr/log": "~1.0",
+                "symfony/var-dumper": "~2.6"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "~4.0"
+            },
+            "suggest": {
+                "kriswallsmith/assetic": "The best way to manage assets",
+                "monolog/monolog": "Log using Monolog",
+                "predis/predis": "Redis storage"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.10-dev"
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "DebugBar": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Maxime Bouroumeau-Fuseau",
+                    "email": "maxime.bouroumeau@gmail.com",
+                    "homepage": "http://maximebf.com"
+                }
+            ],
+            "description": "Debug bar in the browser for php application",
+            "homepage": "https://github.com/maximebf/php-debugbar",
+            "keywords": [
+                "debug"
+            ],
+            "time": "2015-10-19 20:35:12"
         },
         {
             "name": "mockery/mockery",

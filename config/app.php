@@ -137,6 +137,10 @@ return [
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
 
+        Eusonlito\LaravelMeta\MetaServiceProvider::class,
+        Eusonlito\LaravelPacker\PackerServiceProvider::class,
+        Eusonlito\LaravelGettext\GettextServiceProvider::class,
+
         /*
          * Application Service Providers...
          */
@@ -193,6 +197,10 @@ return [
         'URL'       => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View'      => Illuminate\Support\Facades\View::class,
+
+        'Meta'      => Eusonlito\LaravelMeta\Facade::class,
+        'Packer'    => Eusonlito\LaravelPacker\Facade::class,
+        'Gettext'   => Eusonlito\LaravelGettext\Facade::class,
 
     ],
 
