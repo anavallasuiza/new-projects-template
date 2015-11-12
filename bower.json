@@ -7,11 +7,12 @@
     "Adrián Pardellas <adrian@anavallasuiza.com>",
     "Andrea L. Lozano <andrea@anavallasuiza.com>",
     "Aymará Ghiglione <aymara@anavallasuiza.com>",
-    "Berto Yáñez <berto@ber.to>"
+    "Berto Yáñez <berto@ber.to>",
     "Carlos Morales <carlos@anavallasuiza.com>",
-    "Rubén Prol <ruben@anavallasuiza.com>",
+    "Rubén Prol <ruben@anavallasuiza.com>"
   ],
   "private": true,
   "dependencies": {
+    "atomic-foundation": "~1.1.3"
   }
 }
