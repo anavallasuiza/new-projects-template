@@ -198,9 +198,12 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View'      => Illuminate\Support\Facades\View::class,
 
-        'Meta'      => Eusonlito\LaravelMeta\Facade::class,
-        'Packer'    => Eusonlito\LaravelPacker\Facade::class,
-        'Gettext'   => Eusonlito\LaravelGettext\Facade::class,
+        'Meta'    => Eusonlito\LaravelMeta\Facade::class,
+        'Packer'  => Eusonlito\LaravelPacker\Facade::class,
+        'Gettext' => Eusonlito\LaravelGettext\Facade::class,
+
+
+        'HtmlHelper' => App\Facades\HtmlHelper::class,
 
     ],
 
