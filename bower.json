@@ -4,12 +4,12 @@
   "version": "0.0.1",
   "homepage": "https://project-url",
   "authors": [
-    "Carlos Morales <carlos@anavallasuiza.com>",
-    "Aymará Ghiglione <aymara@anavallasuiza.com>",
     "Adrián Pardellas <adrian@anavallasuiza.com>",
     "Andrea L. Lozano <andrea@anavallasuiza.com>",
-    "Rubén Prol <ruben@anavallasuiza.com>",
+    "Aymará Ghiglione <aymara@anavallasuiza.com>",
     "Berto Yáñez <berto@ber.to>"
+    "Carlos Morales <carlos@anavallasuiza.com>",
+    "Rubén Prol <ruben@anavallasuiza.com>",
   ],
   "private": true,
   "dependencies": {
