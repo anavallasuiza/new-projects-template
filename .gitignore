@@ -1,7 +1,6 @@
 /node_modules
 /vendor
-/resources/assets/web_modules/*
-!/resources/assets/web_modules/icomoon/
+/resources/assets/web_modules/
 /public/vendor
 /public/assets/web/*
 /public/packages/*
@@ -21,3 +20,4 @@ _ide_helper.php
 debugbar.php
 Homestead.yaml
 Homestead.json
+npm-debug.log
