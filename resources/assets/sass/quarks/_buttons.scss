@@ -1,0 +1,301 @@
+// Buttons
+// - - - - - - - - - - - - - - - - - - - - - - - - -
+
+// ########     ###    ########  ########  #### ##    ##  ######       ######  #### ######## ########
+// ##     ##   ## ##   ##     ## ##     ##  ##  ###   ## ##    ##     ##    ##  ##       ##  ##
+// ##     ##  ##   ##  ##     ## ##     ##  ##  ####  ## ##           ##        ##      ##   ##
+// ########  ##     ## ##     ## ##     ##  ##  ## ## ## ##   ####     ######   ##     ##    ######
+// ##        ######### ##     ## ##     ##  ##  ##  #### ##    ##           ##  ##    ##     ##
+// ##        ##     ## ##     ## ##     ##  ##  ##   ### ##    ##     ##    ##  ##   ##      ##
+// ##        ##     ## ########  ########  #### ##    ##  ######       ######  #### ######## ########
+$button-tny: .05em .25em .1em;
+$button-sml: .05em .25em .1em;
+$button-med: .3em .75em;
+$button-lrg: .4rem .9rem;
+
+// ######## ######## ##     ## ########     ######  ######## ######## ######## #### ##    ##  ######    ######
+//    ##    ##        ##   ##     ##       ##    ## ##          ##       ##     ##  ###   ## ##    ##  ##    ##
+//    ##    ##         ## ##      ##       ##       ##          ##       ##     ##  ####  ## ##        ##
+//    ##    ######      ###       ##        ######  ######      ##       ##     ##  ## ## ## ##   ####  ######
+//    ##    ##         ## ##      ##             ## ##          ##       ##     ##  ##  #### ##    ##        ##
+//    ##    ##        ##   ##     ##       ##    ## ##          ##       ##     ##  ##   ### ##    ##  ##    ##
+//    ##    ######## ##     ##    ##        ######  ########    ##       ##    #### ##    ##  ######    ######
+
+$button-font-color: $primary-color-tint-2;
+$button-font-tny: rem-calc(11);
+$button-font-sml: rem-calc(12);
+$button-font-med: .85rem;
+$button-font-lrg: 1rem;
+
+
+// ########   ######         ###    ##    ## ########     ########   #######  ########  ########  ######## ########
+// ##     ## ##    ##       ## ##   ###   ## ##     ##    ##     ## ##     ## ##     ## ##     ## ##       ##     ##
+// ##     ## ##            ##   ##  ####  ## ##     ##    ##     ## ##     ## ##     ## ##     ## ##       ##     ##
+// ########  ##   ####    ##     ## ## ## ## ##     ##    ########  ##     ## ########  ##     ## ######   ########
+// ##     ## ##    ##     ######### ##  #### ##     ##    ##     ## ##     ## ##   ##   ##     ## ##       ##   ##
+// ##     ## ##    ##     ##     ## ##   ### ##     ##    ##     ## ##     ## ##    ##  ##     ## ##       ##    ##
+// ########   ######      ##     ## ##    ## ########     ########   #######  ##     ## ########  ######## ##     ##
+$button-border-width: 0px;
+$button-border-style: solid;
+$button-bg-color: $primary-color-tint-1;
+$button-bg-hover: tint($primary-color, 10%);
+$button-border-color: $button-bg-hover;
+
+// ########     ###    ########  #### ##     ##  ######
+// ##     ##   ## ##   ##     ##  ##  ##     ## ##    ##
+// ##     ##  ##   ##  ##     ##  ##  ##     ## ##
+// ########  ##     ## ##     ##  ##  ##     ##  ######
+// ##   ##   ######### ##     ##  ##  ##     ##       ##
+// ##    ##  ##     ## ##     ##  ##  ##     ## ##    ##
+// ##     ## ##     ## ########  ####  #######   ######
+$button-radius: 0;
+
+%button {
+    border: $button-border-width $button-border-style $button-border-color;
+    cursor: pointer;
+    font-family: inherit;
+    font-weight: normal;
+    line-height: normal;
+    margin: 0;
+    position: relative;
+    text-decoration: none;
+    text-align: center;
+    -webkit-appearance: none;
+    border-radius: $button-radius;
+    display: inline-block;
+    padding: $button-med;
+    font-size: $button-font-med;
+    background-color: $button-bg-hover;
+    color: $white;
+    vertical-align: middle;
+    &:hover,
+    &:focus,
+    &:active {
+        text-decoration: none;
+    }
+    &:hover,
+    &:focus {
+        background: $button-bg-color;
+        color: $button-font-color;
+    }
+    &:active {
+        background: $primary-color;
+        color: $white;
+    }
+}
+
+%button-primary {
+    text-transform: uppercase;
+    padding: $button-lrg;
+}
+
+%button-primary-colors {
+    background: $primary-color;
+    color: white;
+    &:hover,
+    &:focus,
+    &:active {
+        background: $primary-color-tint-1;
+        color: $primary-color-tint-2;
+    }
+}
+
+%secondary-button {
+    @extend %button;
+    background: transparent;
+    border: 1px solid $primary-color;
+    color: $primary-color;
+    text-transform: uppercase;
+}
+
+%tertiary-button {
+    @extend %button;
+    background: $gray10;
+    border: 1px solid $primary-color;
+    color: $primary-color;
+}
+
+%white-button {
+    @extend %button;
+    background: white;
+    color: $primary-color;
+    &:hover,
+    &:focus,
+    &:active {
+        background: white;
+        color: $primary-color;
+    }
+}
+
+%gray-button {
+    @extend %button;
+    background: white;
+    color: $primary-color-tint-2;
+    border: 1px solid $primary-color-tint-2;
+    &:hover,
+    &:focus,
+    &:active {
+        background: $primary-color-tint-2;
+        color: white;
+    }
+}
+
+%fancy-button-base {
+    background: transparent;
+    color: $primary-color;
+    outline: 1px solid;
+    padding: 0.5rem 1.5rem;
+    overflow: hidden;
+    text-transform: uppercase;
+    position: relative;
+    min-width: 8rem; //Hack for stupid Chrome
+    &:before,
+    &:after {
+        content: "";
+        border-right: 1px solid;
+        height: 100px;
+        width: 0;
+        display: block;
+        position: absolute;
+    }
+    &:before {
+        top: 0;
+        left: .5rem;
+        @include default-transition('top');
+    }
+    &:after {
+        bottom: 0;
+        right: .5rem;
+        @include default-transition('bottom');
+    }
+}
+
+%fancy-button-hover {
+    &:hover {
+        background: transparent;
+        &:before {
+            top: -100px;
+        }
+        &:after {
+            bottom: -100px;
+        }
+    }
+}
+
+%fancy-button-fake-hover {
+    &:hover {
+        .button-text {
+            background: transparent;
+            &:before {
+                top: -100px;
+            }
+            &:after {
+                bottom: -100px;
+            }
+        }
+    }
+}
+
+%fake-button {
+    border: $button-border-width $button-border-style $button-border-color;
+    font-family: inherit;
+    font-weight: normal;
+    line-height: normal;
+    margin: 0;
+    position: relative;
+    text-decoration: none;
+    text-align: center;
+    -webkit-appearance: none;
+    border-radius: $button-radius;
+    display: inline-block;
+    padding: $button-med;
+    font-size: $button-font-med;
+    background-color: $button-bg-hover;
+    color: $white;
+    vertical-align: middle;
+}
+
+
+@mixin fancy-button-themed($fancy-button-color) {
+    @extend %fancy-button-base;
+    @extend %fancy-button-hover;
+    color: $fancy-button-color;
+    outline-color: $fancy-button-color; //outline, e non border, porque ás veces a Chrome non lle dá a gana de poñer border-top
+    &:before,
+    &:after {
+        outline-color: $fancy-button-color;
+    }
+}
+
+@mixin fancy-button-fake-themed($fancy-button-color) {
+    @extend %fancy-button-fake-hover;
+    .button-text {
+        @extend %fancy-button-base;
+        color: $fancy-button-color;
+        outline-color: $fancy-button-color;
+        &:before,
+        &:after {
+            outline-color: $fancy-button-color;
+        }
+    }
+    &:hover {
+        .button-text {
+            color: $fancy-button-color;
+        }
+    }
+}
+
+.button {
+    @extend %button;
+}
+
+.button-primary {
+    @extend %button-primary;
+}
+
+.button-alternate {
+    @extend %secondary-button;
+}
+
+%button-small {
+    font-size: $button-font-sml;
+    padding: $button-sml;
+}
+
+%button-large {
+    padding: $button-lrg;
+    font-size: $button-font-lrg;
+}
+
+%button-100 {
+    display: block;
+    width: 100%;
+}
+
+%button-disabled {
+    background: $primary-color-tint-1;
+    pointer-events: none;
+}
+
+%button-dull {
+    background: none;
+    border: none;
+    color: $body-font-color;
+    &:hover,
+    &:focus,
+    &:active {
+        color: $primary-color;
+    }
+}
+
+%button-link {
+    background: none;
+    border: none;
+    color: $secondary-color;
+    padding: 0;
+    &:hover,
+    &:focus,
+    &:active {
+        color: $primary-color;
+    }
+}

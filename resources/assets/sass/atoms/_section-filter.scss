@@ -1,0 +1,130 @@
+.at-section-filter {
+    margin-bottom: 2rem;
+    padding-left: 2rem;
+    padding-right: 2rem;
+
+    @media screen and (max-width: $viewport-xs) {
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+
+    .section-title {
+        @extend %h5-size;
+        font-weight: $font-weight-normal;
+        text-transform: uppercase;
+        margin-top: 2rem;
+        a {
+            color: $primary-color;
+        }
+    }
+    .filter-wrapper {
+        @extend %row;
+        > fieldset {
+            @extend %col-xs-12;
+            @extend %col-sm-6;
+            @extend %col-md-4;
+            @extend %col-lg-4;
+            margin-bottom: 2rem;
+
+            @media screen and (min-width: $viewport-md) {
+                flex-grow: 1;
+                flex-basis: 10rem;
+                max-width: 20%;
+                margin-right: 2rem;
+            }            
+
+            @media screen and (max-width: $viewport-sm) {
+                flex: 1 1 auto;
+                max-width: 100%;
+                width: 100%;
+            }
+
+            .nano {
+                max-height: 10rem;
+                overflow-y: auto;
+            }
+        }
+    }
+    .form-footer {
+        @extend %col-xs-12;
+        text-align: right;
+
+        @media screen and (max-width: $viewport-xs) {
+            text-align: center;
+        }
+
+        .button {
+            @extend %button-primary;
+            @extend %tertiary-button;
+
+            @media screen and (max-width: $viewport-xs) {
+                padding: 0.4rem 0.3rem;
+            }
+        }
+    }
+    .filter-title {
+        @extend %main-label;
+        margin-bottom: .25rem;
+    }
+    .is-folded {
+        max-height: 1rem;
+        overflow: hidden;
+    }
+    .form-group {
+        margin-bottom: 0;
+        label {
+            @extend %body-size-2;
+        }
+    }
+    .inner-wrapper {
+        .form-group-wrapper {
+            @extend %col-xs-6;
+            flex-wrap: wrap;
+            flex-direction: column;
+
+            .form-group {
+                flex: 0 1 auto;
+            }
+            
+            &.form-group-twocol {
+                max-width: 100%;
+                flex-grow: 1;
+
+                input[type="checkbox"] + label {
+                    margin-right: 0.2rem;
+                }
+            } 
+        }
+    }
+
+    .filter-price-wrapper {
+        padding: 5px;
+
+        .ui-state-default, 
+        .ui-widget-content .ui-state-default {
+            background: $secondary-color;
+            border: 1px solid $secondary-color;
+        }
+
+        .ui-output {
+            margin-top: 0.5rem;
+            display: inline-block;
+        }
+    }
+}
+
+
+// estilos para scroll tuneado
+
+.nano > .nano-content {
+    margin-left: 5px;
+    padding: 0 20px 20px 0;
+}
+
+.nano > .nano-pane {
+    background: $gray9;
+}
+
+.nano > .nano-pane > .nano-slider {
+    background: $secondary-color;
+}

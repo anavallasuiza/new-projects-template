@@ -1,0 +1,21 @@
+.at-list-links {
+    > h1 {
+        text-transform: uppercase;
+        font-size: $h6-font-size;
+    }
+
+    ul {
+        @extend %unstyled-list;
+
+        li {
+            a {
+                color: $primary-color;
+                &:hover,
+                &:focus,
+                &:active {
+                    color: $gray5;
+                }
+            }
+        }
+    }
+}

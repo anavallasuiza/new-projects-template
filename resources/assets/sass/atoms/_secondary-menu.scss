@@ -1,0 +1,44 @@
+.at-secondary-menu {
+    font-size: 0.85rem;
+    margin-bottom: $paragraph-margin-bottom;
+    a {
+        color: $primary-color-tint-2;
+        &:hover,
+        &:focus,
+        &:active,
+        &.is-active {
+            color: white;
+        }
+    }
+
+    .secondary-menu-title {
+        font-size: 0.85rem;
+        text-transform: uppercase;
+        color: white;
+        margin-bottom: 0;
+        a {
+            color: white;
+            &:before {
+                margin-right: .25rem;
+            }
+        }
+    }
+
+    .item-list {
+        @extend %unstyled-list;
+        padding-left: 1.4rem;
+        margin-bottom: 0;
+        margin-top: .2rem;
+        a {
+            line-height: 1em;
+        }
+    }
+}
+
+.at-secondary-menu.at-secondary-menu-more {
+    .item-list {
+        @extend %unstyled-list;
+        padding-left: 0;
+        padding-bottom: 0;
+    }
+}

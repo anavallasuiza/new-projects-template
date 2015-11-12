@@ -1,0 +1,112 @@
+.at-step-list {
+    @extend %unstyled-list;
+    display: flex;
+    padding-top: 1rem;
+    margin-bottom: $gutter-width;
+    li {
+        position: relative;
+        flex: 1 1 auto;
+        font-size: 0.85rem;
+        text-align: center;
+        &:before {
+            content: '';
+            display: block;
+            width: 100%;
+            height: 0;
+            border-top: 2px solid $gray9;
+            padding-top: 1rem;
+        }
+        a,
+        span {
+            color: $body-font-color;
+            display: block;
+            text-transform: uppercase;
+            margin: 0 $gutter-width;
+            &:before {
+                @include default-transition('background');
+                content: '';
+                display: inline-block;
+                width: 1rem;
+                height: 1rem;
+                background: $gray9;
+                border-radius: 100%;
+                position: absolute;
+                top: -.5rem;
+                z-index: 2;
+                left: 50%;
+                margin-left: -.5rem;
+            }
+        }
+        a {
+            &:hover,
+            &:focus,
+            &:active {
+                color: $secondary-color;
+                &:before {
+                    background: $secondary-color;
+                }
+            }
+        }
+        &:first-of-type {
+            &:before {
+                width: 50%;
+                margin-left: auto;
+            }
+        }
+        &:last-of-type {
+            &:before {
+                width: 50%;
+            }
+        }
+        &.is-active {
+            a {
+                color: $secondary-color;
+                &:before {
+                    background: $secondary-color;
+                }
+            }
+        }
+    }
+    @media screen and (max-width: $viewport-sm) {
+        flex-direction: column;
+        margin-left: 1rem;
+        li {
+            text-align: left;
+            &:before {
+                border-top: 0;
+                border-left: 2px solid $gray9;
+                height: 100%;
+                width: 0;
+                position: absolute;
+                left: 0;
+            }
+            a,span  {
+                padding: .25rem 0;
+                &:before {
+                    left: -.4rem;
+                    top: 50%;
+                    margin-left: 0;
+                    margin-top: -.5rem;
+                }
+            }
+
+            &:first-of-type,
+            &:last-of-type {
+                &:before {
+                    width: 0;
+                }
+            }
+            &:first-of-type {
+                &:before {
+                    height: 50%;
+                    bottom: 0;
+                }
+            }
+            &:last-of-type {
+                &:before {
+                    height: 50%;
+                }
+            }
+        }
+    }
+}

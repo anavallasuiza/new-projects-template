@@ -1,0 +1,24 @@
+// Tables
+// - - - - - - - - - - - - - - - - - - - - - - - - -
+
+
+%responsive-td {
+    @media screen and (max-width: $viewport-sm) {
+        display: flex;
+        &[data-label] {
+            &:before {
+                content: attr(data-label);
+                text-transform: uppercase;
+                color: $primary-color;
+                font-weight: bold;
+                min-width: 7rem;
+                padding-right: $gutter-width;
+                font-size: 0.8rem;
+            }
+        }
+    }
+}
+
+td {
+    @extend %responsive-td;
+}

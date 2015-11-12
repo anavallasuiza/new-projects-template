@@ -1,0 +1,26 @@
+.at-cookie-message {
+     position: fixed;
+     bottom: 0;
+     background: white;
+     color: $primary-color;
+     width: 100%;
+     text-align: center;
+     padding: 10px;
+     z-index: 1000;
+
+     p {
+          display: inline-block;
+          margin: .5rem 0; 
+     }
+
+     .button {
+          font-weight: 800;
+          margin-left: 1rem;
+          background: $secondary-color;
+          color: white;
+
+          &:hover {
+               background: $primary-color;
+          }
+     }
+}

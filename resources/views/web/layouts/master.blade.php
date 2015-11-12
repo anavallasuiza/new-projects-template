@@ -2,30 +2,30 @@
 <!--[if IE 9]><html class="lt-ie10 no-js" lang="{{App::getLocale()}}"><![endif]-->
 <html class="no-js" lang="{{ App::getLocale() }}" data-url="{{ asset('/') }}">
     <head>
-        {{--@section('head')
+        @section('head')
             @include('web.molecules.head.default')
-        @show--}}
+        @show
     </head>
 
     <body id="top" class="@section('body-classes')@show">
 
-            {{--@section('header')
+            @section('header')
                 @include('web.molecules.header.default')
-            @show--}}
+            @show
 
-            {{--@section('flash')
+            @section('flash')
                 @include('web.atoms.alerts.flash')
-            @show--}}
+            @show
 
-            {{--@section('errors')
+            @section('errors')
                 @include('web.atoms.alerts.errors')
-            @show--}}
+            @show
 
             @yield('content')
 
-            {{--@section('footer')
+            @section('footer')
                 @include('web.molecules.footer.default')
-            @show--}}
+            @show
 
         {!! HtmlHelper::jsModule('common') !!}
 
