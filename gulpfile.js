@@ -155,7 +155,7 @@ gulp.task('dev-server', function() {
  */
 gulp.task('webpack:prod', function(callback) {
 
-    let buildConfig = Object.create(webpackConfig);
+    let buildConfig = Object.create(webpackConfig());
 
     buildConfig.plugins = buildConfig.plugins.concat(
         new webpack.DefinePlugin({
@@ -166,7 +166,11 @@ gulp.task('webpack:prod', function(callback) {
             'DEBUG': false
         }),
         new webpack.optimize.DedupePlugin(),
-        new webpack.optimize.UglifyJsPlugin()
+        new webpack.optimize.UglifyJsPlugin({
+            compress: {
+                warnings: false
+            }
+        })
     );
 
     webpack(buildConfig, function(err, stats) {
@@ -182,37 +186,7 @@ gulp.task('webpack:prod', function(callback) {
     });
 });
 
-gulp.task('webpack:dev', function(callback) {
-
-    const buildConfig = Object.create(webpackConfig);
-
-    buildConfig.plugins = buildConfig.plugins.concat(
-        new webpack.DefinePlugin({
-            'process.env': {
-                'NODE_ENV': JSON.stringify('production')
-            },
-            'PRODUCTION': true,
-            'DEBUG': false
-        }),
-        new webpack.optimize.DedupePlugin(),
-        new webpack.optimize.UglifyJsPlugin()
-    );
-
-    webpack(buildConfig, function(err, stats) {
-        if (err) {
-            throw new gutil.PluginError('webpack:build', err);
-        }
-
-        gutil.log('[webpack:build]', stats.toString({
-            colors: true
-        }));
-
-        callback();
-    });
-});
-
-
-const myDevConfig = Object.create(webpackConfig);
+const myDevConfig = Object.create(webpackConfig());
 myDevConfig.devtool = 'sourcemap';
 myDevConfig.debug = true;
 
@@ -221,7 +195,7 @@ var devCompiler = webpack(myDevConfig);
 gulp.task('webpack:dev', function(callback) {
     devCompiler.run(function(err, stats) {
         if (err) {
-            throw new gutil.PluginError('webpack:build-dev', err);
+            throw new gutil.PluginError('webpack:dev', err);
         }
 
         gutil.log('[webpack:dev]', stats.toString({
