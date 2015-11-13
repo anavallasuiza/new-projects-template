@@ -13,6 +13,7 @@
   ],
   "private": true,
   "dependencies": {
-    "atomic-foundation": "~1.1.3"
+    "atomic-foundation": "~1.1.3",
+    "delegato": "~1.0.3"
   }
 }

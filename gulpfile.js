@@ -1,5 +1,6 @@
 'use strict';
 
+const fs = require('fs');
 const gulp = require('gulp');
 const gutil = require('gulp-util');
 const merge = require('merge');
@@ -10,10 +11,20 @@ const rename = require('gulp-rename');
 const sourcemaps = require('gulp-sourcemaps');
 const replace = require('gulp-replace');
 const stylecow = require('gulp-stylecow');
+const imagemin = require('gulp-imagemin');
+const cache = require('gulp-cached');
 const browserSync = require('browser-sync').create();
 const webpack = require('webpack');
 
 const webpackConfig = require('./webpack.config.js');
+
+const config = require('./config.js');
+
+// Handle local config files
+if (fs.existsSync('./local.config.js')) {
+    merge(config, require('./local.config.js'));
+}
+
 /**
  * Clean
  */
@@ -34,7 +45,6 @@ gulp.task('clean', function() {
  */
 const filesToMove = {
     input: [
-        'resources/assets/img/**/*.*',
         'resources/assets/fonts/**/*.*',
         '!resources/assets/fonts/icomoon/**/*.*'
     ],
@@ -96,7 +106,7 @@ gulp.task('css:dev', function() {
         .pipe(stylecow(merge({}, styleCowOptions, {
             code: 'normal'
         })))
-        .pipe(sourcemaps.write('.'))
+        .pipe(sourcemaps.write())
         .pipe(gulp.dest(styleToProcess.output))
         .pipe(browserSync.stream());
 });
@@ -110,6 +120,23 @@ gulp.task('css:prod', function() {
         .pipe(gulp.dest(styleToProcess.output));
 });
 
+
+/**
+ * Images
+ */
+const imagesToProcess = {
+    input: 'resources/assets/img/*.{jpg,png,gif,svg}',
+    output: 'public/assets/web/img'
+};
+
+gulp.task('images', function() {
+    gulp.src(imagesToProcess.input)
+        .pipe(cache('img'))
+        .pipe(imagemin())
+        .pipe(gulp.dest(imagesToProcess.output));
+});
+
+
 /**
  * Build fonts
  */
@@ -118,7 +145,7 @@ const filesToProcess = {
     output: 'resources/assets/fonts/icomoon/'
 };
 
-gulp.task('fonts', function() {
+gulp.task('fonts', ['copy'], function() {
     return gulp.src(filesToProcess.input)
         .pipe(replace(/url\('fonts\//ig, 'url(\'../fonts/'))
         .pipe(replace(/\[.*] {[\n\r]([^}]*[\n\r])*}/, '%icon {\n    &:before,\n    &:after{\n    $1}\n}'))
@@ -134,18 +161,20 @@ gulp.task('fonts', function() {
 const watchFiles = {
     css: 'resources/assets/sass/**/*.scss',
     views: 'resources/views/**/*.php',
-    js: 'resources/assets/js/**/*.js'
+    js: 'resources/assets/js/**/*.js',
+    img: imagesToProcess.input
 };
 
 gulp.task('dev-server', function() {
     browserSync.init({
-        proxy: 'http://ans-template.dev',
+        proxy: config.projectURL,
         open: false
     });
 
-    gulp.watch(watchFiles.css, ['css-dev']);
+    gulp.watch(watchFiles.css, ['css:dev']);
     gulp.watch(watchFiles.views).on('change', browserSync.reload);
-    gulp.watch(watchFiles.js, ['webpack-watch']);
+    gulp.watch(watchFiles.img, ['images']);
+    gulp.watch(watchFiles.js, ['webpack:watch']);
 
 });
 
@@ -155,7 +184,7 @@ gulp.task('dev-server', function() {
  */
 gulp.task('webpack:prod', function(callback) {
 
-    let buildConfig = Object.create(webpackConfig());
+    let buildConfig = Object.create(webpackConfig(config.publicPath));
 
     buildConfig.plugins = buildConfig.plugins.concat(
         new webpack.DefinePlugin({
@@ -186,7 +215,7 @@ gulp.task('webpack:prod', function(callback) {
     });
 });
 
-const myDevConfig = Object.create(webpackConfig());
+const myDevConfig = Object.create(webpackConfig(config.publicPath));
 myDevConfig.devtool = 'sourcemap';
 myDevConfig.debug = true;
 
@@ -206,15 +235,20 @@ gulp.task('webpack:dev', function(callback) {
     });
 });
 
-gulp.task('webpack-watch', ['webpack:dev'], browserSync.reload);
+
+/**
+ * Extra watchers
+ */
+gulp.task('webpack:watch', ['webpack:dev'], browserSync.reload);
+
 
 /**
  * Development task
  */
-gulp.task('dev', ['clean', 'copy', 'fonts', 'css:dev', 'dev-server']);
+gulp.task('dev', ['fonts', 'images', 'css:dev', 'webpack:dev', 'dev-server']);
 
 
 /**
  * Default task
  */
-gulp.task('default', ['clean', 'copy', 'fonts', 'css:prod']);
+gulp.task('default', ['fonts', 'images', 'css:prod', 'webpack:prod']);

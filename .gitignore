@@ -21,3 +21,4 @@ debugbar.php
 Homestead.yaml
 Homestead.json
 npm-debug.log
+local.config.js
