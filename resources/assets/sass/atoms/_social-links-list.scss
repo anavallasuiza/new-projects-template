@@ -1,0 +1,33 @@
+.at-social-links-list {
+    .links-list {
+        @extend %inline-list;
+        > li {
+            margin-right: .25rem;
+            vertical-align: top;
+        }
+    }
+    .twitter {
+        @extend %icon-twitter;
+    }
+    .facebook {
+        @extend %icon-facebook;
+    }
+    .instagram {
+        @extend %icon-instagram;
+    }
+    .pinterest {
+        @extend %icon-pinterest;
+    }
+    .flickr {
+        @extend %icon-flickr;
+    }
+    .youtube {
+        @extend %icon-youtube;
+    }    
+    .linkedin {
+        @extend %icon-linkedin;
+    }
+    .google {
+        @extend %icon-gplus;
+    }
+}

@@ -1,0 +1,107 @@
+@import "../../web_modules/icomoon/icomoon";
+
+%icon {
+    &:before,
+    &:after {
+        vertical-align: middle;
+        display: inline-block;
+        padding-bottom: .20em; //Fix alignment
+    }
+}
+
+%icon-fix-alignment-none {
+    &:before,
+    &:after {
+        padding-bottom: 0;
+    }
+}
+
+
+%icon-spacing-before {
+    &:after {
+        padding-left: .25em;
+    }
+}
+
+%icon-spacing-after {
+    &:before {
+        padding-right: .25em;
+    }
+}
+
+%icon-stacked {
+    position: relative;
+    display: inline-block;
+    vertical-align: middle;
+    @extend %icon;
+    &:before,
+    &:after {
+        position: absolute;
+    }
+}
+
+@mixin icon-stack($background-icon, $front-icon, $size: 1rem) {
+    @extend %icon-stacked;
+    height: $size;
+    line-height: $size;
+    padding-left: $size;
+    &:before {
+        content: $background-icon;
+        font-size: $size;
+        top: 0;
+        left: 0;
+    }
+    &:after {
+        content: $front-icon;
+        font-size: $size / 2;
+        top: 50%;
+        left: 50%;
+        margin-left: - $size / 4;
+        margin-top: - $size / 4;
+    }
+}
+
+@mixin icon-stack-rounded($background-color, $front-icon, $size: 1rem, $padded: 0) {
+    @extend %icon-stacked;
+    height: $size;
+    line-height: $size;
+    padding-left: $size + $padded;
+    &:before {
+        content: '';
+        font-size: $size;
+        top: 0;
+        left: 0;
+        background: $background-color;
+        border-radius: $global-rounded;
+        width: $size;
+        height: $size;
+    }
+    &:after {
+        content: $front-icon;
+        font-size: $size / 2;
+        top: $size / 2;
+        left: $size / 2;
+        margin-left: - $size / 4;
+        margin-top: - $size / 4;
+    }
+}
+
+%icon-lg-2 {
+    &:before,
+    &:after {
+        font-size: 1.2rem;
+    }
+}
+
+%icon-lg-3 {
+    &:before,
+    &:after {
+        font-size: 1.4rem;
+    }
+}
+%icon-lg-3 {
+    &:before,
+    &:after {
+        font-size: 1.6rem;
+    }
+}

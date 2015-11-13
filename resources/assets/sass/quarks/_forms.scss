@@ -1,0 +1,569 @@
+// Forms
+// - - - - - - - - - - - - - - - - - - - - - - - - -
+
+$include-html-form-classes: false;
+$form-spacing: rem-calc(16);
+
+
+// ##          ###    ########  ######## ##       
+// ##         ## ##   ##     ## ##       ##       
+// ##        ##   ##  ##     ## ##       ##       
+// ##       ##     ## ########  ######   ##       
+// ##       ######### ##     ## ##       ##       
+// ##       ##     ## ##     ## ##       ##       
+// ######## ##     ## ########  ######## ######## 
+$form-label-font-size: rem-calc(14);
+$form-label-font-weight: $font-weight-bold;
+$form-label-line-height: 1.5;
+$form-label-font-color: $body-font-color;
+
+
+// #### ##    ## ########  ##     ## ########  ######  
+//  ##  ###   ## ##     ## ##     ##    ##    ##    ## 
+//  ##  ####  ## ##     ## ##     ##    ##    ##       
+//  ##  ## ## ## ########  ##     ##    ##     ######  
+//  ##  ##  #### ##        ##     ##    ##          ## 
+//  ##  ##   ### ##        ##     ##    ##    ##    ## 
+// #### ##    ## ##         #######     ##     ######  
+
+$input-font-color: $body-font-color;
+$input-font-size: rem-calc(14);
+$input-bg-color: $white;
+$input-focus-bg-color: shade($input-bg-color, 5%);
+$input-border-color: $body-font-color;
+$input-focus-border-color: $primary-color;
+$input-border-style: solid;
+$input-border-width: 1px;
+$input-border-radius: 0;
+$input-disabled-bg: $gray9;
+$input-box-shadow: inset 0 0 2px rgba(0,0,0,0.1);
+
+// ######## #### ######## ##       ########   ######  ######## ########  ######  
+// ##        ##  ##       ##       ##     ## ##    ## ##          ##    ##    ## 
+// ##        ##  ##       ##       ##     ## ##       ##          ##    ##       
+// ######    ##  ######   ##       ##     ##  ######  ######      ##     ######  
+// ##        ##  ##       ##       ##     ##       ## ##          ##          ## 
+// ##        ##  ##       ##       ##     ## ##    ## ##          ##    ##    ## 
+// ##       #### ######## ######## ########   ######  ########    ##     ######  
+$fieldset-border-style: solid;
+$fieldset-border-width: 1px;
+$fieldset-border-color: $gray7;
+$fieldset-padding: 0 ( $column-gutter );
+$fieldset-margin: 0 0 $paragraph-margin-bottom;
+
+
+// ##       ########  ######   ######## ##    ## ########   ######  
+// ##       ##       ##    ##  ##       ###   ## ##     ## ##    ## 
+// ##       ##       ##        ##       ####  ## ##     ## ##       
+// ##       ######   ##   #### ######   ## ## ## ##     ##  ######  
+// ##       ##       ##    ##  ##       ##  #### ##     ##       ## 
+// ##       ##       ##    ##  ##       ##   ### ##     ## ##    ## 
+// ######## ########  ######   ######## ##    ## ########   ######  
+$legend-bg: transparent;
+$legend-font-weight: $font-weight-normal;
+// $legend-padding: rem-calc(0 3);
+
+
+// ######## ########  ########   #######  ########     ##     ## ########  ######   ######     ###     ######   ########  ######  
+// ##       ##     ## ##     ## ##     ## ##     ##    ###   ### ##       ##    ## ##    ##   ## ##   ##    ##  ##       ##    ## 
+// ##       ##     ## ##     ## ##     ## ##     ##    #### #### ##       ##       ##        ##   ##  ##        ##       ##       
+// ######   ########  ########  ##     ## ########     ## ### ## ######    ######   ######  ##     ## ##   #### ######    ######  
+// ##       ##   ##   ##   ##   ##     ## ##   ##      ##     ## ##             ##       ## ######### ##    ##  ##             ## 
+// ##       ##    ##  ##    ##  ##     ## ##    ##     ##     ## ##       ##    ## ##    ## ##     ## ##    ##  ##       ##    ## 
+// ######## ##     ## ##     ##  #######  ##     ##    ##     ## ########  ######   ######  ##     ##  ######   ########  ######  
+
+// $input-error-message-padding: rem-calc(6 9 9);
+// $input-error-message-top: -1px;
+// $input-error-message-font-size: rem-calc(12);
+// $input-error-message-font-weight: $font-weight-normal;
+// $input-error-message-font-style: italic;
+// $input-error-message-font-color: $white;
+// $input-error-message-font-color-alt: $oil;
+
+
+//  ######  ######## ##       ########  ######  ########  ######  
+// ##    ## ##       ##       ##       ##    ##    ##    ##    ## 
+// ##       ##       ##       ##       ##          ##    ##       
+//  ######  ######   ##       ######   ##          ##     ######  
+//       ## ##       ##       ##       ##          ##          ## 
+// ##    ## ##       ##       ##       ##    ##    ##    ##    ## 
+//  ######  ######## ######## ########  ######     ##     ######  
+$select-bg-color: $input-bg-color;
+$select-hover-bg-color: scale-color($select-bg-color, $lightness: -3%);
+
+@import "../../web_modules/foundation/scss/foundation/components/forms";
+
+//Copied interesting code from Foundation. Some variables depend on the previous import. 
+
+// @MIXIN
+//
+// We use this mixin to give all basic form elements their style
+@mixin form-element {
+    background-color: $input-bg-color;
+    font-family: $input-font-family;
+    border: {
+        style: $input-border-style;
+        width: $input-border-width;
+        color: $input-border-color;
+    }
+    border-radius: $input-border-radius;
+    color: $input-font-color;
+    display: block;
+    font-size: $input-font-size;
+    margin: 0 0 $form-spacing 0;
+    padding: $form-spacing / 2;
+    height: ($input-font-size + ($form-spacing * 1.5) - rem-calc(1));
+    width: 100%;
+    @include box-sizing(border-box);
+    @if $input-include-glowing-effect {
+        @include block-glowing-effect(focus, $glowing-effect-fade-time, $glowing-effect-color);
+    }
+    // Basic focus styles
+    &:focus {
+        background: $input-focus-bg-color;
+        border-color: $input-focus-border-color;
+        outline: none;
+    }
+    // Disbaled Styles
+    &:disabled {
+        background-color: $input-disabled-bg;
+        cursor: $input-disabled-cursor;
+    }
+
+    // Disabled background input background color
+    &[disabled],
+    &[readonly],
+    fieldset[disabled] & {
+        background-color: $input-disabled-bg;
+        cursor: $input-disabled-cursor;
+    }
+}
+
+// We use this mixin to style select elements
+@mixin form-select  {
+    -webkit-appearance: none !important;
+    border-radius: 0;
+    background-color: $select-bg-color;
+
+    // Hide the dropdown arrow shown in newer IE versions
+    &::-ms-expand {
+        display: none;
+    }
+
+    // The custom arrow has some fake horizontal padding so we can align it
+    // from the right side of the element without relying on CSS3
+    background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZlcnNpb249IjEuMSIgeD0iMTJweCIgeT0iMHB4IiB3aWR0aD0iMjRweCIgaGVpZ2h0PSIzcHgiIHZpZXdCb3g9IjAgMCA2IDMiIGVuYWJsZS1iYWNrZ3JvdW5kPSJuZXcgMCAwIDYgMyIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSI+PHBvbHlnb24gcG9pbnRzPSI1Ljk5MiwwIDIuOTkyLDMgLTAuMDA4LDAgIi8+PC9zdmc+);
+
+    // We can safely use leftmost and rightmost now
+    background-position: if($text-direction == 'rtl', 0%, 100%) center;
+
+    background-repeat: no-repeat;
+    border: {
+        style: $input-border-style;
+        width: $input-border-width;
+        color: $input-border-color;
+    }
+    padding: ($form-spacing / 2);
+    font-size: $input-font-size;
+    font-family: $body-font-family;
+    color: $input-font-color;
+    line-height: normal;
+    @include radius(0);
+    &.radius { @include radius($global-radius); }
+    &:hover {
+        background-color: $select-hover-bg-color;
+        border-color: $input-focus-border-color;
+    }
+    // Disabled Styles
+    &:disabled {
+        background-color: $input-disabled-bg;
+        cursor: $input-disabled-cursor;
+    }
+}
+
+#{text-inputs(all, 'input')} {
+    -webkit-appearance: none;
+    border-radius: 0;
+    @include form-element;
+    @if $input-include-glowing-effect == false {
+        @include single-transition(all, 0.3s, linear);
+    }
+}
+
+input[type="submit"] {
+    -webkit-appearance: none;
+    border-radius: 0;
+}
+
+/* Respect enforced amount of rows for textarea */
+textarea[rows] {
+    height: auto;
+}
+
+/* Not allow resize out of parent */
+textarea {
+    max-width: 100%;
+}
+
+/* Add height value for select elements to match text input height */
+select {
+    @include form-select;
+    padding: 0.3rem 2rem 0.3rem 0.3rem;
+    border-radius: $input-border-radius;
+    -moz-appearance: none;
+    -moz-user-select: none;
+    height: ($input-font-size + ($form-spacing * 1.5) - rem-calc(1));
+    &:focus {
+        box-shadow: $input-box-shadow;
+    }
+}
+
+/* Adjust margin for form elements below */
+input[type="file"],
+input[type="checkbox"],
+input[type="radio"],
+select {
+    margin: 0 0 $form-spacing 0;
+}
+
+input[type="checkbox"] + label,
+input[type="radio"] + label {
+    display: inline-block;
+    margin-#{$default-float}: $form-spacing * .5;
+    margin-#{$opposite-direction}: $form-spacing;
+    margin-bottom: 0;
+    vertical-align: baseline;
+}
+
+/* Normalize file input width */
+input[type="file"] {
+    width:100%;
+}
+
+/* HTML5 Number spinners settings */
+input[type=number] {
+    @include html5number(moz, $input-number-spinners)
+}
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+    @include html5number(webkit, $input-number-spinners);
+}
+
+/* We add basic fieldset styling */
+fieldset {
+    @include fieldset;
+    border: 0;
+    padding: 0;
+}
+
+label,
+.form-label {
+    @include form-label;
+    font-weight: $font-weight-normal;
+    color: $primary-color;
+    font-size: 1rem;
+}
+
+%main-label {
+    font-family: $header-font-family;
+    color: $primary-color;
+    font-weight: $font-weight-bold;
+    text-transform: uppercase;
+    font-size: .85rem;
+}
+
+// End of Foundation
+
+
+.form-title {
+    @extend %h1-size;
+    font-family: $header-font-family-alternate;
+    color: $primary-color;
+}
+
+.form-subtitle {
+    font-family: $header-font-family;
+    color: $primary-color;
+}
+
+.form-group-wrapper {
+    @extend %row;
+    flex-wrap: nowrap;
+
+    .form-group {
+        flex: 1 1 auto;
+        padding: 0 $half-gutter-width;
+
+        @media screen and (max-width: $viewport-sm) {
+            min-width: 100%;
+        }
+    }
+
+    @media screen and (max-width: $viewport-sm) {
+        flex-wrap: wrap;
+    }
+
+    &.form-group-wrapper-3-col {
+        .form-group {
+            flex: 1 1 0;
+        }
+    }
+}
+
+.form-group-check-wrapper {
+    margin-top: 1.5rem;
+}
+
+.form-group {
+    margin-bottom: .5rem;
+    &.with-addon {
+        display: flex;
+        flex-wrap: wrap;
+        .form-label,
+        .form-description {
+            flex: 1 1 100%;
+        }
+        input,
+        select {
+            flex: 1 1;
+            margin-bottom: 0;
+            min-width: 1px; //Firefox fix
+            &[type="range"] {
+                align-self: center;
+                margin-right: .5rem;
+            }
+        }
+        .selectize-control {
+            flex: 1 1;
+        }
+    }
+    &.with-addon-search {
+        .form-control {
+            @media screen and (min-width: 320px) {
+            border-right: none;
+            &:focus + .action-search {
+                background: $input-focus-bg-color;
+                &:hover,
+                &:focus,
+                &:active {
+                    background: $button-bg-hover;
+                }
+            }
+        }
+        }
+        .action-search {
+            @include default-transition('background');
+            @extend %icon-fix-alignment-none;
+            @media screen and (min-width: 320px) {
+                border-left: none;
+            }
+            &:before {
+                font-size: 1.3rem;
+            }
+        }
+    }
+}
+
+.has-related,
+.has-related .form-group {
+    margin-bottom: 0;
+}
+
+legend {
+    padding-left: 0;
+}
+
+
+
+// ########     ###    ##    ##  ######   ########
+// ##     ##   ## ##   ###   ## ##    ##  ##
+// ##     ##  ##   ##  ####  ## ##        ##
+// ########  ##     ## ## ## ## ##   #### ######
+// ##   ##   ######### ##  #### ##    ##  ##
+// ##    ##  ##     ## ##   ### ##    ##  ##
+// ##     ## ##     ## ##    ##  ######   ########
+
+
+input[type="range"] {
+    -webkit-appearance: none;
+    height: 10px;
+    width: 100%;
+    border-radius: 0;
+    background: $gray9;
+    outline: none;
+
+    //Hai que repetir os estilos cos prefixos, non funciona agrupando selectores:
+
+    // Slider Handle
+    &::-webkit-slider-thumb {
+        -webkit-appearance: none;
+        width: 15px;
+        height: 25px;
+        border-radius: 0;
+        background: $secondary-color;
+        cursor: pointer;
+        -webkit-transition: background .15s ease-in-out;
+        transition: background .15s ease-in-out;
+
+        &:hover {
+            background: $primary-color;
+        }
+    }
+
+    &:active::-webkit-slider-thumb {
+        background: $primary-color;
+    }
+
+    &::-moz-range-thumb {
+        width: 15px;
+        height: 25px;
+        border: 0;
+        border-radius: 0;
+        background: $secondary-color;
+        cursor: pointer;
+        transition: background .15s ease-in-out;
+
+        &:hover {
+            background: $primary-color;
+        }
+    }
+
+    &:active::-moz-range-thumb {
+        background: $primary-color;
+    }
+}
+
+::-moz-range-track {
+    background: $gray9;
+}
+
+.range-value {
+    display: inline-block;
+    position: relative;
+    min-width: 2rem;
+    color: #fff;
+    font-size: 1rem;
+    line-height: 1.2rem;
+    text-align: center;
+    border-radius: 3px;
+    background: #353535;
+    padding: .3rem .3rem .4rem;
+    margin-left: 7px;
+
+    &:after {
+        @include triangle(1rem, #353535, left);
+        content: '';
+        display: block;
+        position: absolute;
+        left: -.45rem;
+        top: 50%;
+        margin-top: -.5rem;
+
+    }
+}
+
+//  ######  ##     ##  #######  ####  ######  ########
+// ##    ## ##     ## ##     ##  ##  ##    ## ##
+// ##       ##     ## ##     ##  ##  ##       ##
+// ##       ######### ##     ##  ##  ##       ######
+// ##       ##     ## ##     ##  ##  ##       ##
+// ##    ## ##     ## ##     ##  ##  ##    ## ##
+//  ######  ##     ##  #######  ####  ######  ########
+
+%choice {
+    @extend %visuallyhidden; // Hide but remain visible for screen readers. Place code by hand if you don't have this %placeholder.
+    + label {
+        cursor: pointer;
+        user-select: none;
+        @include default-transition('all');
+    }
+}
+
+%choice-pre-icon {
+    + label {
+        @extend %icon; // Icon library basic styles. Place code by hand if you don't have this %placeholder.
+        &:before {
+            display: inline-block;
+            text-align: center;
+        }
+    }
+}
+
+@mixin choice-pre-icon($icon-var, $pre-width, $hover-icon-var: $icon-var, $icon-font-size: 1rem) {
+    @extend %choice-pre-icon;
+    + label {
+        &:before {
+            width: $pre-width;
+            content: $icon-var;
+            font-size: $icon-font-size;
+        }
+    }
+    &:focus {
+        + label {
+            outline: 1px dashed rgba(black, .3);
+        }
+    }
+    &:hover:not(:checked) + label {
+        &:before {
+            content: $hover-icon-var;
+        }
+    }
+    &:checked + label {
+        &:before {
+            content:$hover-icon-var;
+        }
+    }
+}
+
+@mixin choice-state-styles($normal-bg, $hover-bg, $active-bg, $normal-color, $hover-color, $active-color) {
+    &:empty + label {
+        background: $normal-bg;
+        color: $normal-color;
+    }
+    &:hover:not(:checked) + label,
+    &:focus + label {
+        background: $hover-bg;
+        color: $hover-color
+    }
+    &:checked + label {
+        background: $active-bg;
+        color: $active-color;
+    }
+}
+
+@mixin choice-pre-state-styles($normal-bg, $hover-bg, $active-bg, $normal-color, $hover-color, $active-color) {
+    &:empty + label {
+        &:before {
+            background: $normal-bg;
+            color: $normal-color;
+        }
+    }
+    &:hover:not(:checked) + label,
+    &:focus + label {
+        &:before {
+            background: $hover-bg;
+            color: $hover-color;
+        }
+    }
+    &:checked + label {
+        &:before {
+            background: $active-bg;
+            color: $active-color;
+        }
+    }
+}
+
+
+.checkbox {
+    @extend %choice;
+    @include choice-state-styles(transparent, transparent, transparent, $primary-color, $primary-color, $primary-color);
+    @include choice-pre-state-styles(transparent, transparent, transparent, $primary-color, $primary-color, $primary-color);
+    @include choice-pre-icon($icon-var-stop, .8rem, $icon-var-square-check);
+    + label {
+        font-size: 0.9rem;
+        margin-left: 0!important;
+        &:before {
+            margin-right: .5rem;
+        }
+    }
+}
