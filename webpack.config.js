@@ -27,8 +27,7 @@ module.exports = (url) => {
                 exclude: [/node_modules/, /web_modules/],
                 loader: 'babel-loader',
                 query: {
-                    stage: 1,
-                    cacheDirectory: true
+                    presets: ['es2015']
                 }
             }]
         },
