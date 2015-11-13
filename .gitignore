@@ -22,3 +22,4 @@ Homestead.yaml
 Homestead.json
 npm-debug.log
 local.config.js
+cache.json
