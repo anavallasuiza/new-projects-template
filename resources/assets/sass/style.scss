@@ -109,27 +109,3 @@
 // ##        ######### ##    ##  ##             ##
 // ##        ##     ## ##    ##  ##       ##    ##
 // ##        ##     ##  ######   ########  ######
-
-
-
-//TEST!!!!
-
-.tp-profile {
-    .main-outer-wrapper {
-        @extend %row-no-negative-margin;
-        padding: 3rem;
-
-        @media screen and (max-width: $viewport-md) {
-            padding: 0.5rem;
-        }
-    }
-    .ml-user-menu {
-        @extend %col-xs-12;
-        @extend %col-md-3;
-    }
-    .user-main-wrapper {
-        @extend %col-xs-12;
-        @extend %col-md-8;
-        @extend %col-md-offset-1;
-    }
-}
