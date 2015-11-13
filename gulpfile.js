@@ -15,6 +15,7 @@ const imagemin = require('gulp-imagemin');
 const cache = require('gulp-cached');
 const browserSync = require('browser-sync').create();
 const webpack = require('webpack');
+const runSequence = require('gulp-run-sequence');
 
 const webpackConfig = require('./webpack.config.js');
 
@@ -25,23 +26,16 @@ if (fs.existsSync('./local.config.js')) {
     merge(config, require('./local.config.js'));
 }
 
-/**
- * Clean
- */
-const folderToClean = [
-    'public/assets/web'
-];
-
-gulp.task('clean', function() {
-    return gulp.src(folderToClean, {
-            read: false
-        })
-        .pipe(rimraf());
-});
+const publicFolders = {
+    css: 'public/assets/web/css',
+    img: 'public/assets/web/img',
+    fonts: 'public/assets/web/fonts',
+    js: 'public/assets/web/js'
+};
 
 
 /**
- * Copy assets
+ * Fonts
  */
 const filesToMove = {
     input: [
@@ -58,7 +52,14 @@ const icoFontsToMove = {
     output: 'public/assets/web/fonts/'
 };
 
-gulp.task('copy', ['clean'], function() {
+gulp.task('clean:fonts', function() {
+    return gulp.src(publicFolders.fonts, {
+            read: false
+        })
+        .pipe(rimraf());
+});
+
+gulp.task('copy:fonts', ['clean:fonts'], function() {
     let files = gulp.src(filesToMove.input, {
             base: filesToMove.base
         })
@@ -70,6 +71,20 @@ gulp.task('copy', ['clean'], function() {
         .pipe(gulp.dest(icoFontsToMove.output));
 
     return mergeStream(files, icoFonts);
+});
+
+const filesToProcess = {
+    input: 'resources/assets/fonts/icomoon/dist/css/style.css',
+    output: 'resources/assets/fonts/icomoon/'
+};
+
+gulp.task('fonts', ['copy:fonts'], function() {
+    return gulp.src(filesToProcess.input)
+        .pipe(replace(/url\('fonts\//ig, 'url(\'../fonts/'))
+        .pipe(replace(/\[.*] {[\n\r]([^}]*[\n\r])*}/, '%icon {\n    &:before,\n    &:after{\n    $1}\n}'))
+        .pipe(replace(/\.icon-(.*):before {[\n\r].*content: (.*);/ig, '$icon-var-$1: $2;\n%icon-$1 {\n    @extend %icon;\n    &:before {\n    content: $icon-var-$1;\n    }'))
+        .pipe(rename('_icomoon.scss'))
+        .pipe(gulp.dest(filesToProcess.output));
 });
 
 
@@ -99,7 +114,15 @@ const styleCowOptions = {
     ]
 };
 
-gulp.task('css:dev', function() {
+gulp.task('clean:css', function() {
+    return gulp.src(publicFolders.css, {
+            read: false
+        })
+        .pipe(rimraf());
+});
+
+
+gulp.task('css:dev', ['clean:css'], function() {
     return gulp.src(styleToProcess.input)
         .pipe(sourcemaps.init())
         .pipe(sass().on('error', sass.logError))
@@ -111,7 +134,7 @@ gulp.task('css:dev', function() {
         .pipe(browserSync.stream());
 });
 
-gulp.task('css:prod', function() {
+gulp.task('css:prod', ['clean:css'], function() {
     return gulp.src(styleToProcess.input)
         .pipe(sass().on('error', sass.logError))
         .pipe(stylecow(merge({}, styleCowOptions, {
@@ -129,29 +152,19 @@ const imagesToProcess = {
     output: 'public/assets/web/img'
 };
 
-gulp.task('images', function() {
+
+gulp.task('clean:img', function() {
+    return gulp.src(publicFolders.img, {
+            read: false
+        })
+        .pipe(rimraf());
+});
+
+gulp.task('images', ['clean:img'], function() {
     gulp.src(imagesToProcess.input)
         .pipe(cache('img'))
         .pipe(imagemin())
         .pipe(gulp.dest(imagesToProcess.output));
-});
-
-
-/**
- * Build fonts
- */
-const filesToProcess = {
-    input: 'resources/assets/fonts/icomoon/dist/css/style.css',
-    output: 'resources/assets/fonts/icomoon/'
-};
-
-gulp.task('fonts', ['copy'], function() {
-    return gulp.src(filesToProcess.input)
-        .pipe(replace(/url\('fonts\//ig, 'url(\'../fonts/'))
-        .pipe(replace(/\[.*] {[\n\r]([^}]*[\n\r])*}/, '%icon {\n    &:before,\n    &:after{\n    $1}\n}'))
-        .pipe(replace(/\.icon-(.*):before {[\n\r].*content: (.*);/ig, '$icon-var-$1: $2;\n%icon-$1 {\n    @extend %icon;\n    &:before {\n    content: $icon-var-$1;\n    }'))
-        .pipe(rename('_icomoon.scss'))
-        .pipe(gulp.dest(filesToProcess.output));
 });
 
 
@@ -182,7 +195,14 @@ gulp.task('dev-server', function() {
 /**
  * Js
  */
-gulp.task('webpack:prod', function(callback) {
+ gulp.task('clean:js', function() {
+     return gulp.src(publicFolders.js, {
+             read: false
+         })
+         .pipe(rimraf());
+ });
+
+gulp.task('webpack:prod', ['clean:js'], function(callback) {
 
     let buildConfig = Object.create(webpackConfig(config.publicPath));
 
@@ -221,7 +241,7 @@ myDevConfig.debug = true;
 
 var devCompiler = webpack(myDevConfig);
 
-gulp.task('webpack:dev', function(callback) {
+gulp.task('webpack:dev', ['clean:js'], function(callback) {
     devCompiler.run(function(err, stats) {
         if (err) {
             throw new gutil.PluginError('webpack:dev', err);
@@ -245,8 +265,7 @@ gulp.task('webpack:watch', ['webpack:dev'], browserSync.reload);
 /**
  * Development task
  */
-gulp.task('dev', ['fonts', 'images', 'css:dev', 'webpack:dev', 'dev-server']);
-
+gulp.task('dev',['fonts', 'images', 'css:dev', 'webpack:dev', 'dev-server']);
 
 /**
  * Default task
