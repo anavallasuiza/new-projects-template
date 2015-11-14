@@ -17,8 +17,10 @@ const browserSync = require('browser-sync').create();
 const webpack = require('webpack');
 const runSequence = require('gulp-run-sequence');
 
-const webpackConfig = require('./webpack.config.js');
 
+/**
+ * Config
+ */
 const config = require('./config.js');
 
 // Handle local config files
@@ -26,6 +28,9 @@ if (fs.existsSync('./local.config.js')) {
     merge(config, require('./local.config.js'));
 }
 
+const webpackConfig = require('./webpack.config.js');
+
+// Public folders
 const publicFolders = {
     css: 'public/assets/web/css',
     img: 'public/assets/web/img',
