@@ -51,8 +51,8 @@ const filesToMove = {
 };
 
 const icoFontsToMove = {
-    input: 'resources/assets/fonts/icomoon/dist/fonts/*.*',
-    base: 'resources/assets/fonts/icomoon/dist/fonts',
+    input: 'resources/assets/fonts/icomoon/fonts/*.*',
+    base: 'resources/assets/fonts/icomoon/fonts',
     output: 'public/assets/web/fonts/'
 };
 
