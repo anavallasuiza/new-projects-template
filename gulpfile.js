@@ -58,21 +58,21 @@ const icoFontsToMove = {
 
 gulp.task('clean:fonts', function() {
     return gulp.src(publicFolders.fonts, {
-            read: false
-        })
-        .pipe(rimraf());
+        read: false
+    })
+    .pipe(rimraf());
 });
 
 gulp.task('copy:fonts', ['clean:fonts'], function() {
     let files = gulp.src(filesToMove.input, {
-            base: filesToMove.base
-        })
-        .pipe(gulp.dest(filesToMove.output));
+        base: filesToMove.base
+    })
+    .pipe(gulp.dest(filesToMove.output));
 
     let icoFonts = gulp.src(icoFontsToMove.input, {
-            base: icoFontsToMove.base
-        })
-        .pipe(gulp.dest(icoFontsToMove.output));
+        base: icoFontsToMove.base
+    })
+    .pipe(gulp.dest(icoFontsToMove.output));
 
     return mergeStream(files, icoFonts);
 });
@@ -120,9 +120,9 @@ const styleCowOptions = {
 
 gulp.task('clean:css', function() {
     return gulp.src(publicFolders.css, {
-            read: false
-        })
-        .pipe(rimraf());
+        read: false
+    })
+    .pipe(rimraf());
 });
 
 
@@ -159,9 +159,9 @@ const imagesToProcess = {
 
 gulp.task('clean:img', function() {
     return gulp.src(publicFolders.img, {
-            read: false
-        })
-        .pipe(rimraf());
+        read: false
+    })
+    .pipe(rimraf());
 });
 
 gulp.task('images', ['clean:img'], function() {
@@ -199,12 +199,12 @@ gulp.task('dev-server', function() {
 /**
  * Js
  */
- gulp.task('clean:js', function() {
-     return gulp.src(publicFolders.js, {
-             read: false
-         })
+gulp.task('clean:js', function() {
+    return gulp.src(publicFolders.js, {
+        read: false
+    })
          .pipe(rimraf());
- });
+});
 
 gulp.task('webpack:prod', ['clean:js'], function(callback) {
 
