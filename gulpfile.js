@@ -78,7 +78,7 @@ gulp.task('copy:fonts', ['clean:fonts'], function() {
 });
 
 const filesToProcess = {
-    input: 'resources/assets/fonts/icomoon/dist/css/style.css',
+    input: 'resources/assets/fonts/icomoon/style.css',
     output: 'resources/assets/fonts/icomoon/'
 };
 
