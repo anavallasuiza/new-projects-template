@@ -15,7 +15,6 @@ const imagemin = require('gulp-imagemin');
 const cache = require('gulp-cached');
 const browserSync = require('browser-sync').create();
 const webpack = require('webpack');
-const runSequence = require('gulp-run-sequence');
 
 
 /**
@@ -236,7 +235,7 @@ gulp.task('webpack:prod', ['clean:js'], function(callback) {
             colors: true
         }));
 
-        callback();
+        return callback();
     });
 });
 
@@ -256,7 +255,7 @@ gulp.task('webpack:dev', ['clean:js'], function(callback) {
             colors: true
         }));
 
-        callback();
+        return callback();
     });
 });
 
@@ -264,7 +263,9 @@ gulp.task('webpack:dev', ['clean:js'], function(callback) {
 /**
  * Extra watchers
  */
-gulp.task('webpack:watch', ['webpack:dev'], browserSync.reload);
+gulp.task('webpack:watch', ['webpack:dev'], function() {
+    browserSync.reload();
+});
 
 
 /**
