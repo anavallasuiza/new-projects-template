@@ -86,7 +86,7 @@ gulp.task('fonts', ['copy:fonts'], function() {
     return gulp.src(filesToProcess.input)
         .pipe(replace(/url\('fonts\//ig, 'url(\'../fonts/'))
         .pipe(replace(/\[.*] {[\n\r]([^}]*[\n\r])*}/, '%icon {\n    &:before,\n    &:after{\n    $1}\n}'))
-        .pipe(replace(/\.icon-(.*):before {[\n\r].*content: (.*);/ig, '$icon-var-$1: $2;\n%icon-$1 {\n    @extend %icon;\n    &:before {\n    content: $icon-var-$1;\n    }'))
+        .pipe(replace(/\.icon-(.*):before {[\n\r]\s+content:\s+(.*);/ig, '$icon-var-$1: $2;\n%icon-$1 {\n    @extend %icon;\n    &:before {\n    content: $icon-var-$1;\n    }'))
         .pipe(rename('_icomoon.scss'))
         .pipe(gulp.dest(filesToProcess.output));
 });
