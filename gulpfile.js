@@ -126,7 +126,7 @@ gulp.task('clean:css', function() {
 });
 
 
-gulp.task('css:dev', ['clean:css'], function() {
+gulp.task('css:dev', ['fonts', 'clean:css'], function() {
     return gulp.src(styleToProcess.input)
         .pipe(sourcemaps.init())
         .pipe(sass().on('error', sass.logError))
@@ -138,7 +138,7 @@ gulp.task('css:dev', ['clean:css'], function() {
         .pipe(browserSync.stream());
 });
 
-gulp.task('css:prod', ['clean:css'], function() {
+gulp.task('css:prod', ['fonts', 'clean:css'], function() {
     return gulp.src(styleToProcess.input)
         .pipe(sass().on('error', sass.logError))
         .pipe(stylecow(merge({}, styleCowOptions, {
@@ -271,9 +271,9 @@ gulp.task('webpack:watch', ['webpack:dev'], function() {
 /**
  * Development task
  */
-gulp.task('dev',['fonts', 'images', 'css:dev', 'webpack:dev', 'dev-server']);
+gulp.task('dev',['images', 'css:dev', 'webpack:dev', 'dev-server']);
 
 /**
  * Default task
  */
-gulp.task('default', ['fonts', 'images', 'css:prod', 'webpack:prod']);
+gulp.task('default', ['images', 'css:prod', 'webpack:prod']);
