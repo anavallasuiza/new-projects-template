@@ -2,6 +2,7 @@ const fs = require('fs');
 const webpack = require('webpack');
 
 const commonsPlugin = new webpack.optimize.CommonsChunkPlugin({
+    name: 'common',
     filename: 'common.[hash].js',
     minChunks: 2
 });
