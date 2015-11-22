@@ -2,15 +2,16 @@
 /vendor
 /resources/assets/web_modules/
 /public/vendor
+/public/assets
 /public/assets/web/*
 /public/packages/*
 /public/storage/
+/resources/assets/fonts/icomoon/_icomoon.scss
 .sass-cache
 composer.phar
 .env
 .DS_Store
 Thumbs.db
-gruntfile.localconfig.js
 *.sh
 /tmp
 .idea
