@@ -16,8 +16,10 @@ const cache = require('gulp-cached');
 const browserSync = require('browser-sync').create();
 const webpack = require('webpack');
 
-const webpackConfig = require('./webpack.config.js');
 
+/**
+ * Config
+ */
 const config = require('./config.js');
 
 // Handle local config files
@@ -25,23 +27,19 @@ if (fs.existsSync('./local.config.js')) {
     merge(config, require('./local.config.js'));
 }
 
-/**
- * Clean
- */
-const folderToClean = [
-    'public/assets/web'
-];
+const webpackConfig = require('./webpack.config.js');
 
-gulp.task('clean', function() {
-    return gulp.src(folderToClean, {
-            read: false
-        })
-        .pipe(rimraf());
-});
+// Public folders
+const publicFolders = {
+    css: 'public/assets/web/css',
+    img: 'public/assets/web/img',
+    fonts: 'public/assets/web/fonts',
+    js: 'public/assets/web/js'
+};
 
 
 /**
- * Copy assets
+ * Fonts
  */
 const filesToMove = {
     input: [
@@ -53,23 +51,44 @@ const filesToMove = {
 };
 
 const icoFontsToMove = {
-    input: 'resources/assets/fonts/icomoon/dist/fonts/*.*',
-    base: 'resources/assets/fonts/icomoon/dist/fonts',
+    input: 'resources/assets/fonts/icomoon/fonts/*.*',
+    base: 'resources/assets/fonts/icomoon/fonts',
     output: 'public/assets/web/fonts/'
 };
 
-gulp.task('copy', ['clean'], function() {
+gulp.task('clean:fonts', function() {
+    return gulp.src(publicFolders.fonts, {
+        read: false
+    })
+    .pipe(rimraf());
+});
+
+gulp.task('copy:fonts', ['clean:fonts'], function() {
     let files = gulp.src(filesToMove.input, {
-            base: filesToMove.base
-        })
-        .pipe(gulp.dest(filesToMove.output));
+        base: filesToMove.base
+    })
+    .pipe(gulp.dest(filesToMove.output));
 
     let icoFonts = gulp.src(icoFontsToMove.input, {
-            base: icoFontsToMove.base
-        })
-        .pipe(gulp.dest(icoFontsToMove.output));
+        base: icoFontsToMove.base
+    })
+    .pipe(gulp.dest(icoFontsToMove.output));
 
     return mergeStream(files, icoFonts);
+});
+
+const filesToProcess = {
+    input: 'resources/assets/fonts/icomoon/style.css',
+    output: 'resources/assets/fonts/icomoon/'
+};
+
+gulp.task('fonts', ['copy:fonts'], function() {
+    return gulp.src(filesToProcess.input)
+        .pipe(replace(/url\('fonts\//ig, 'url(\'../fonts/'))
+        .pipe(replace(/\[.*] {[\n\r]([^}]*[\n\r])*}/, '%icon {\n    &:before,\n    &:after{\n    $1}\n}'))
+        .pipe(replace(/\.icon-(.*):before {[\n\r]\s+content:\s+(.*);/ig, '$icon-var-$1: $2;\n%icon-$1 {\n    @extend %icon;\n    &:before {\n    content: $icon-var-$1;\n    }'))
+        .pipe(rename('_icomoon.scss'))
+        .pipe(gulp.dest(filesToProcess.output));
 });
 
 
@@ -99,7 +118,15 @@ const styleCowOptions = {
     ]
 };
 
-gulp.task('css:dev', function() {
+gulp.task('clean:css', function() {
+    return gulp.src(publicFolders.css, {
+        read: false
+    })
+    .pipe(rimraf());
+});
+
+
+gulp.task('css:dev', ['fonts', 'clean:css'], function() {
     return gulp.src(styleToProcess.input)
         .pipe(sourcemaps.init())
         .pipe(sass().on('error', sass.logError))
@@ -111,7 +138,7 @@ gulp.task('css:dev', function() {
         .pipe(browserSync.stream());
 });
 
-gulp.task('css:prod', function() {
+gulp.task('css:prod', ['fonts', 'clean:css'], function() {
     return gulp.src(styleToProcess.input)
         .pipe(sass().on('error', sass.logError))
         .pipe(stylecow(merge({}, styleCowOptions, {
@@ -129,29 +156,19 @@ const imagesToProcess = {
     output: 'public/assets/web/img'
 };
 
-gulp.task('images', function() {
+
+gulp.task('clean:img', function() {
+    return gulp.src(publicFolders.img, {
+        read: false
+    })
+    .pipe(rimraf());
+});
+
+gulp.task('images', ['clean:img'], function() {
     gulp.src(imagesToProcess.input)
         .pipe(cache('img'))
         .pipe(imagemin())
         .pipe(gulp.dest(imagesToProcess.output));
-});
-
-
-/**
- * Build fonts
- */
-const filesToProcess = {
-    input: 'resources/assets/fonts/icomoon/dist/css/style.css',
-    output: 'resources/assets/fonts/icomoon/'
-};
-
-gulp.task('fonts', ['copy'], function() {
-    return gulp.src(filesToProcess.input)
-        .pipe(replace(/url\('fonts\//ig, 'url(\'../fonts/'))
-        .pipe(replace(/\[.*] {[\n\r]([^}]*[\n\r])*}/, '%icon {\n    &:before,\n    &:after{\n    $1}\n}'))
-        .pipe(replace(/\.icon-(.*):before {[\n\r].*content: (.*);/ig, '$icon-var-$1: $2;\n%icon-$1 {\n    @extend %icon;\n    &:before {\n    content: $icon-var-$1;\n    }'))
-        .pipe(rename('_icomoon.scss'))
-        .pipe(gulp.dest(filesToProcess.output));
 });
 
 
@@ -182,7 +199,14 @@ gulp.task('dev-server', function() {
 /**
  * Js
  */
-gulp.task('webpack:prod', function(callback) {
+gulp.task('clean:js', function() {
+    return gulp.src(publicFolders.js, {
+        read: false
+    })
+         .pipe(rimraf());
+});
+
+gulp.task('webpack:prod', ['clean:js'], function(callback) {
 
     let buildConfig = Object.create(webpackConfig(config.publicPath));
 
@@ -211,7 +235,7 @@ gulp.task('webpack:prod', function(callback) {
             colors: true
         }));
 
-        callback();
+        return callback();
     });
 });
 
@@ -221,7 +245,7 @@ myDevConfig.debug = true;
 
 var devCompiler = webpack(myDevConfig);
 
-gulp.task('webpack:dev', function(callback) {
+gulp.task('webpack:dev', ['clean:js'], function(callback) {
     devCompiler.run(function(err, stats) {
         if (err) {
             throw new gutil.PluginError('webpack:dev', err);
@@ -231,7 +255,7 @@ gulp.task('webpack:dev', function(callback) {
             colors: true
         }));
 
-        callback();
+        return callback();
     });
 });
 
@@ -239,16 +263,17 @@ gulp.task('webpack:dev', function(callback) {
 /**
  * Extra watchers
  */
-gulp.task('webpack:watch', ['webpack:dev'], browserSync.reload);
+gulp.task('webpack:watch', ['webpack:dev'], function() {
+    browserSync.reload();
+});
 
 
 /**
  * Development task
  */
-gulp.task('dev', ['fonts', 'images', 'css:dev', 'webpack:dev', 'dev-server']);
-
+gulp.task('dev',['images', 'css:dev', 'webpack:dev', 'dev-server']);
 
 /**
  * Default task
  */
-gulp.task('default', ['fonts', 'images', 'css:prod', 'webpack:prod']);
+gulp.task('default', ['images', 'css:prod', 'webpack:prod']);
