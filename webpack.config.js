@@ -20,7 +20,10 @@ module.exports = (url) => {
             chunkFilename: '[id].[chunkhash].js'
         },
         resolve: {
-            modulesDirectories: ['node_modules', 'web_modules', 'modules']
+            modulesDirectories: ['node_modules', 'web_modules', 'modules'],
+            alias: {
+                jquery: __dirname + '/node_modules/jquery/src/jquery'
+            }
         },
         module: {
             loaders: [{
