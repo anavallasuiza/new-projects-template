@@ -245,7 +245,7 @@ myDevConfig.debug = true;
 
 var devCompiler = webpack(myDevConfig);
 
-gulp.task('webpack:dev', ['clean:js'], function(callback) {
+gulp.task('webpack:dev', function(callback) {
     devCompiler.run(function(err, stats) {
         if (err) {
             throw new gutil.PluginError('webpack:dev', err);
