@@ -216,7 +216,7 @@ gulp.task('webpack:prod', ['clean:js'], function(callback) {
                 'NODE_ENV': JSON.stringify('production')
             },
             'PRODUCTION': true,
-            'DEBUG': false
+            'DEVELOPMENT': false
         }),
         new webpack.optimize.DedupePlugin(),
         new webpack.optimize.UglifyJsPlugin({
@@ -242,6 +242,13 @@ gulp.task('webpack:prod', ['clean:js'], function(callback) {
 const myDevConfig = Object.create(webpackConfig(config.publicPath));
 myDevConfig.devtool = 'sourcemap';
 myDevConfig.debug = true;
+
+myDevConfig.plugins = myDevConfig.plugins.concat(
+    new webpack.DefinePlugin({
+        'PRODUCTION': false,
+        'DEVELOPMENT': true
+    })
+);
 
 var devCompiler = webpack(myDevConfig);
 
