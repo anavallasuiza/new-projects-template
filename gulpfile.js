@@ -203,7 +203,7 @@ gulp.task('clean:js', function() {
     return gulp.src(publicFolders.js, {
         read: false
     })
-         .pipe(rimraf());
+    .pipe(rimraf());
 });
 
 gulp.task('webpack:prod', ['clean:js'], function(callback) {
@@ -246,7 +246,7 @@ myDevConfig.debug = true;
 var devCompiler = webpack(myDevConfig);
 
 gulp.task('webpack:dev', function(callback) {
-    devCompiler.run(function(err, stats) {
+    return devCompiler.run(function(err, stats) {
         if (err) {
             throw new gutil.PluginError('webpack:dev', err);
         }
@@ -271,7 +271,7 @@ gulp.task('webpack:watch', ['webpack:dev'], function() {
 /**
  * Development task
  */
-gulp.task('dev',['images', 'css:dev', 'webpack:dev', 'dev-server']);
+gulp.task('dev',['images', 'css:dev', 'clean:js', 'webpack:dev', 'dev-server']);
 
 /**
  * Default task
