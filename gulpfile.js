@@ -152,7 +152,7 @@ gulp.task('css:prod', ['fonts', 'clean:css'], function() {
  * Images
  */
 const imagesToProcess = {
-    input: 'resources/assets/img/*.{jpg,png,gif,svg}',
+    input: 'resources/assets/img/**/*.{jpg,png,gif,svg}',
     output: 'public/assets/web/img'
 };
 
