@@ -1,6 +1,6 @@
 ## [Project name]
 
-## Installation
+## Installation (dev environment)
 
 1. Clone the project to your development environment.
 2. Update the .env file with your environment values.
