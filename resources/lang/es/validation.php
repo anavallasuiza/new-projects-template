@@ -9,7 +9,7 @@ return array (
   'alpha_num' => ':attribute solo puede contener letras y números.',
   'array' => ':attribute debe ser un array.',
   'before' => ':attribute debe ser una fecha anterior a :date.',
-  'between' => 
+  'between' =>
   array (
     'array' => ':attribute debe contener entre :min y :max elementos.',
     'file' => 'El tamaño de :attribute debe estar entre :min y :max kilobytes (KB).',
@@ -31,7 +31,7 @@ return array (
   'integer' => ':attribute debe ser un número entero.',
   'ip' => ':attribute debe ser una dirección IP válida.',
   'json' => ':attribute debe ser una cadena JSON válida.',
-  'max' => 
+  'max' =>
   array (
     'array' => ':attribute no puede contener más de :max elementos.',
     'file' => 'El tamaño de  :attribute no puede ser mayor de  :max kilobytes (KB).',
@@ -39,7 +39,7 @@ return array (
     'string' => ' :attribute no puede tener más de :max caracteres.',
   ),
   'mimes' => ' :attribute debe ser uno de estos tipos :values.',
-  'min' => 
+  'min' =>
   array (
     'array' => ':attribute no puede contener menos de :min elementos. ',
     'file' => 'El tamaño de  :attribute no puede ser menor de  :min kilobytes (KB).',
@@ -56,7 +56,7 @@ return array (
   'required_without' => ':attribute es obligatorio sin :values.',
   'required_without_all' => ':attribute es obligatorio sin :values.',
   'same' => ':attribute y :other deben coincidir.',
-  'size' => 
+  'size' =>
   array (
     'array' => ':attribute debe contener :size elementos.',
     'file' => ':attribute debe tener :size kilobytes (KB).',
