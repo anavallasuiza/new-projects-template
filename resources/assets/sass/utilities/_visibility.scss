@@ -25,7 +25,7 @@
 */
 
 %visuallyhidden-focusable {
-    @extends %visuallyhidden;
+    @extend %visuallyhidden;
     &:active,
     &:focus {
         clip: auto;
