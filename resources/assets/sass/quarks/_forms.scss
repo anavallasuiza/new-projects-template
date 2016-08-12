@@ -386,6 +386,12 @@ label,
     }
 }
 
+.selectize-input {
+    input[type=text] {
+        height: auto;
+    }
+}
+
 .has-related,
 .has-related .form-group {
     margin-bottom: 0;
