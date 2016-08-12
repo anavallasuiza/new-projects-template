@@ -1,7 +1,6 @@
 // Forms
 // - - - - - - - - - - - - - - - - - - - - - - - - -
 
-$include-html-form-classes: false;
 $form-spacing: rem-calc(16);
 
 
@@ -28,7 +27,7 @@ $form-label-font-color: $body-font-color;
 
 $input-font-color: $body-font-color;
 $input-font-size: rem-calc(14);
-$input-bg-color: $white;
+$input-bg-color: white;
 $input-focus-bg-color: shade($input-bg-color, 5%);
 $input-border-color: $body-font-color;
 $input-focus-border-color: $primary-color;
@@ -48,7 +47,7 @@ $input-box-shadow: inset 0 0 2px rgba(0,0,0,0.1);
 $fieldset-border-style: solid;
 $fieldset-border-width: 1px;
 $fieldset-border-color: $gray7;
-$fieldset-padding: 0 ( $column-gutter );
+$fieldset-padding: 0 0;
 $fieldset-margin: 0 0 $paragraph-margin-bottom;
 
 
@@ -91,16 +90,13 @@ $legend-font-weight: $font-weight-normal;
 $select-bg-color: $input-bg-color;
 $select-hover-bg-color: scale-color($select-bg-color, $lightness: -3%);
 
-@import "../../web_modules/foundation/scss/foundation/components/forms";
-
-//Copied interesting code from Foundation. Some variables depend on the previous import. 
+//Copied interesting code from Foundation.
 
 // @MIXIN
 //
 // We use this mixin to give all basic form elements their style
 @mixin form-element {
     background-color: $input-bg-color;
-    font-family: $input-font-family;
     border: {
         style: $input-border-style;
         width: $input-border-width;
@@ -114,20 +110,16 @@ $select-hover-bg-color: scale-color($select-bg-color, $lightness: -3%);
     padding: $form-spacing / 2;
     height: ($input-font-size + ($form-spacing * 1.5) - rem-calc(1));
     width: 100%;
-    @include box-sizing(border-box);
-    @if $input-include-glowing-effect {
-        @include block-glowing-effect(focus, $glowing-effect-fade-time, $glowing-effect-color);
-    }
+    box-sizing: border-box;
     // Basic focus styles
     &:focus {
         background: $input-focus-bg-color;
         border-color: $input-focus-border-color;
         outline: none;
     }
-    // Disbaled Styles
+    // Disabled Styles
     &:disabled {
         background-color: $input-disabled-bg;
-        cursor: $input-disabled-cursor;
     }
 
     // Disabled background input background color
@@ -135,7 +127,6 @@ $select-hover-bg-color: scale-color($select-bg-color, $lightness: -3%);
     &[readonly],
     fieldset[disabled] & {
         background-color: $input-disabled-bg;
-        cursor: $input-disabled-cursor;
     }
 }
 
@@ -155,7 +146,7 @@ $select-hover-bg-color: scale-color($select-bg-color, $lightness: -3%);
     background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZlcnNpb249IjEuMSIgeD0iMTJweCIgeT0iMHB4IiB3aWR0aD0iMjRweCIgaGVpZ2h0PSIzcHgiIHZpZXdCb3g9IjAgMCA2IDMiIGVuYWJsZS1iYWNrZ3JvdW5kPSJuZXcgMCAwIDYgMyIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSI+PHBvbHlnb24gcG9pbnRzPSI1Ljk5MiwwIDIuOTkyLDMgLTAuMDA4LDAgIi8+PC9zdmc+);
 
     // We can safely use leftmost and rightmost now
-    background-position: if($text-direction == 'rtl', 0%, 100%) center;
+    background-position: 100% center;
 
     background-repeat: no-repeat;
     border: {
@@ -168,8 +159,6 @@ $select-hover-bg-color: scale-color($select-bg-color, $lightness: -3%);
     font-family: $body-font-family;
     color: $input-font-color;
     line-height: normal;
-    @include radius(0);
-    &.radius { @include radius($global-radius); }
     &:hover {
         background-color: $select-hover-bg-color;
         border-color: $input-focus-border-color;
@@ -177,7 +166,52 @@ $select-hover-bg-color: scale-color($select-bg-color, $lightness: -3%);
     // Disabled Styles
     &:disabled {
         background-color: $input-disabled-bg;
-        cursor: $input-disabled-cursor;
+    }
+}
+
+// We use this mixin to style fieldsets
+@mixin fieldset {
+    border: $fieldset-border-width $fieldset-border-style $fieldset-border-color;
+    margin: $fieldset-margin;
+    padding: $fieldset-padding;
+
+    // and legend styles
+    legend {
+        font-weight: bold;
+        margin: 0;
+        margin-left: rem-calc(-3);
+        padding-left: 0;
+    }
+}
+
+
+// @MIXIN
+//
+// We use this mixin to create form labels
+//
+// $alignment - Alignment options. Default: false. Options: [right, inline, false]
+// $base-style - Control whether or not the base styles come through. Default: true.
+@mixin form-label($alignment:false, $base-style:true) {
+
+    // Control whether or not the base styles come through.
+    @if $base-style {
+        color: $form-label-font-color;
+        cursor: pointer;
+        display: block;
+        font-size: $form-label-font-size;
+        font-weight: $form-label-font-weight;
+        line-height: $form-label-line-height;
+        margin-bottom: 0;
+    }
+
+    // Alignment options
+    @if $alignment == right {
+        float: none !important;
+        text-align: right;
+    }
+    @else if $alignment == inline {
+        margin: 0 0 $form-spacing 0;
+        padding: $form-spacing / 2 + rem-calc($input-border-width) 0;
     }
 }
 
@@ -185,9 +219,6 @@ $select-hover-bg-color: scale-color($select-bg-color, $lightness: -3%);
     -webkit-appearance: none;
     border-radius: 0;
     @include form-element;
-    @if $input-include-glowing-effect == false {
-        @include single-transition(all, 0.3s, linear);
-    }
 }
 
 input[type="submit"] {
@@ -229,8 +260,8 @@ select {
 input[type="checkbox"] + label,
 input[type="radio"] + label {
     display: inline-block;
-    margin-#{$default-float}: $form-spacing * .5;
-    margin-#{$opposite-direction}: $form-spacing;
+    margin-left: $form-spacing * .5;
+    margin-right: $form-spacing;
     margin-bottom: 0;
     vertical-align: baseline;
 }
@@ -238,15 +269,6 @@ input[type="radio"] + label {
 /* Normalize file input width */
 input[type="file"] {
     width:100%;
-}
-
-/* HTML5 Number spinners settings */
-input[type=number] {
-    @include html5number(moz, $input-number-spinners)
-}
-input[type="number"]::-webkit-inner-spin-button,
-input[type="number"]::-webkit-outer-spin-button {
-    @include html5number(webkit, $input-number-spinners);
 }
 
 /* We add basic fieldset styling */
@@ -367,10 +389,6 @@ label,
 .has-related,
 .has-related .form-group {
     margin-bottom: 0;
-}
-
-legend {
-    padding-left: 0;
 }
 
 
@@ -558,7 +576,7 @@ input[type="range"] {
     @extend %choice;
     @include choice-state-styles(transparent, transparent, transparent, $primary-color, $primary-color, $primary-color);
     @include choice-pre-state-styles(transparent, transparent, transparent, $primary-color, $primary-color, $primary-color);
-    @include choice-pre-icon($icon-var-stop, .8rem, $icon-var-square-check);
+    @include choice-pre-icon($icon-var-stop, .8rem, $icon-var-check);
     + label {
         font-size: 0.9rem;
         margin-left: 0!important;

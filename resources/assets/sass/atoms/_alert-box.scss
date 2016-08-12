@@ -40,7 +40,6 @@
 // $alert-transition-speed: 300ms;
 // $alert-transition-ease: ease-out;
 
-//@import "../../web_modules/foundation/scss/foundation/components/alert-boxes";
 
 .alert-outer-wrapper {
     background: white;
@@ -73,17 +72,17 @@
     }
 
     &.success {
-        @extend %icon-circle-check;
+        @extend %icon-check;
     }
 
     &.error {
-        @extend %icon-ban;
+        @extend %icon-warning;
     }
     &.warning {
-        @extend %icon-circle-cross;
+        @extend %icon-warning;
     }
     &.info {
-        @extend %icon-arrow-right;
+        @extend %icon-info-circle;
     }
     .action-close {
         float: right;

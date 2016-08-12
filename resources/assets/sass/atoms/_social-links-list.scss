@@ -18,9 +18,6 @@
     .pinterest {
         @extend %icon-pinterest;
     }
-    .flickr {
-        @extend %icon-flickr;
-    }
     .youtube {
         @extend %icon-youtube;
     }    
@@ -28,6 +25,6 @@
         @extend %icon-linkedin;
     }
     .google {
-        @extend %icon-gplus;
+        @extend %icon-google-plus;
     }
 }

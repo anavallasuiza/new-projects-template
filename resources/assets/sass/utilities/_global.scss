@@ -1,11 +1,5 @@
 // We use these to make sure border radius matches unless we want it different.
 // $global-radius: 3px;
-// $global-rounded: 1000px;
-
-// We use these to control inset shadow shiny edges and depressions.
-// $shiny-edge-size: 0 1px 0;
-// $shiny-edge-color: rgba($white, .5);
-// $shiny-edge-active-color: rgba($black, .2);
 
 // We use these to define default font stacks
 $font-family-sans-serif: 'Raleway', sans-serif;
@@ -14,14 +8,6 @@ $font-family-serif: 'Raleway', sans-serif;
 $header-font-family-alternate: 'selmark', serif;
 $font-family-monospace: Consolas, "Liberation Mono", Courier, monospace;
 
-// We use this as cursors values for enabling the option of having custom cursors in the whole site's stylesheet
-// $cursor-crosshair-value: crosshair;
-// $cursor-default-value: default;
-// $cursor-pointer-value: pointer;
-// $cursor-help-value: help;
-// $cursor-text-value: text;
-
-@import "../../web_modules/foundation/scss/foundation/components/global";
 
 %clearfix {
     @include clearfix;

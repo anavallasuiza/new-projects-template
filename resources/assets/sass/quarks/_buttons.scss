@@ -66,7 +66,7 @@ $button-radius: 0;
     padding: $button-med;
     font-size: $button-font-med;
     background-color: $button-bg-hover;
-    color: $white;
+    color: white;
     vertical-align: middle;
     &:hover,
     &:focus,
@@ -80,7 +80,7 @@ $button-radius: 0;
     }
     &:active {
         background: $primary-color;
-        color: $white;
+        color: white;
     }
 }
 
@@ -211,7 +211,7 @@ $button-radius: 0;
     padding: $button-med;
     font-size: $button-font-med;
     background-color: $button-bg-hover;
-    color: $white;
+    color: white;
     vertical-align: middle;
 }
 

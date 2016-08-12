@@ -1,33 +1,3 @@
-// Add percentage of white to a color
-@function tint($color, $percent){
-    @return mix(white, $color, $percent);
-}
-
-// Add percentage of black to a color
-@function shade($color, $percent){
-    @return mix(black, $color, $percent);
-}
-
-// $white       : #FFFFFF;
-// $ghost       : #FAFAFA;
-// $snow        : #F9F9F9;
-// $vapor       : #F6F6F6;
-// $white-smoke : #F5F5F5;
-// $silver      : #EFEFEF;
-// $smoke       : #EEEEEE;
-// $gainsboro   : #DDDDDD;
-// $iron        : #CCCCCC;
-// $base        : #AAAAAA;
-// $aluminum    : #999999;
-// $jumbo       : #888888;
-// $monsoon     : #777777;
-// $steel       : #666666;
-// $charcoal    : #555555;
-// $tuatara     : #444444;
-// $oil         : #333333;
-// $jet         : #222222;
-// $black       : #000000;
-
 //From darker to lighter
 $gray1: tint(#414042, 10%);
 $gray2: tint(#414042, 20%);

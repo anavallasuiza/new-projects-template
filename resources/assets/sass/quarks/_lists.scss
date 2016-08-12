@@ -1,8 +1,5 @@
 // Inline Lists
 // - - - - - - - - - - - - - - - - - - - - - - - - -
-
-$include-html-inline-list-classes: false;
-
 // We use these to style lists
 // $list-font-family: $paragraph-font-family;
 // $list-font-size: $paragraph-font-size;
@@ -36,7 +33,6 @@ $include-html-inline-list-classes: false;
 // We use this to control any elements within list items
 // $inline-list-children-display: block;
 
-// @import "../../web_modules/foundation/scss/foundation/components/inline-lists";
 
 %floated-list {
     @extend %clearfix;
@@ -104,7 +100,7 @@ $include-html-inline-list-classes: false;
         a {
             padding-bottom: .7rem;
             border-bottom: 5px solid transparent;
-            @media #{$small-only} {
+            @media (max-width: $viewport-xs) {
                 padding-bottom: .2rem;
                 border-bottom: 3px solid transparent;
             }
