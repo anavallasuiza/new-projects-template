@@ -4,7 +4,7 @@ const fs = require('fs');
 const gulp = require('gulp');
 const gutil = require('gulp-util');
 const merge = require('merge');
-const rimraf = require('gulp-rimraf');
+const del = require('del');
 const mergeStream = require('merge-stream');
 const sass = require('gulp-sass');
 const rename = require('gulp-rename');
@@ -57,10 +57,7 @@ const icoFontsToMove = {
 };
 
 gulp.task('clean:fonts', function() {
-    return gulp.src(publicFolders.fonts, {
-        read: false
-    })
-        .pipe(rimraf());
+    return del(publicFolders.fonts);
 });
 
 gulp.task('copy:fonts', ['clean:fonts'], function() {
@@ -134,10 +131,7 @@ const styleCowOptions = {
 };
 
 gulp.task('clean:css', function() {
-    return gulp.src(publicFolders.css, {
-        read: false
-    })
-        .pipe(rimraf());
+    return del(publicFolders.css);
 });
 
 
@@ -173,10 +167,7 @@ const imagesToProcess = {
 
 
 gulp.task('clean:img', function() {
-    return gulp.src(publicFolders.img, {
-        read: false
-    })
-        .pipe(rimraf());
+    return del(publicFolders.img);
 });
 
 gulp.task('images', ['clean:img'], function() {
@@ -215,10 +206,7 @@ gulp.task('dev-server', function() {
  * Js
  */
 gulp.task('clean:js', function() {
-    return gulp.src(publicFolders.js, {
-        read: false
-    })
-        .pipe(rimraf());
+    return del(publicFolders.js);
 });
 
 gulp.task('webpack:prod', ['clean:js'], function(callback) {
