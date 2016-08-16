@@ -75,14 +75,10 @@ $offset-properties: 'margin-left' !default;
 }
 
 %container-fluid {
-    box-sizing: border-box;
     margin-right: auto;
     margin-left: auto;
     padding-right: $outer-margin;
     padding-left: $outer-margin;
-    display: flex;
-    min-height: 100%;
-    flex-direction: column;
 }
 
 %row {
