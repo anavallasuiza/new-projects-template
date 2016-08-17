@@ -4,6 +4,14 @@
 // Allows the use of rem-calc() or lower-bound() in your settings
 @import "functions";
 
+img {
+    max-width: 100%;
+    height: auto;
+    -ms-interpolation-mode: bicubic;
+    // Get rid of gap under images by making them display: inline-block; by default
+    display: inline-block;
+    vertical-align: middle;
+}
 
 // We use this to do clear floats
 @mixin clearfix {

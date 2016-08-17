@@ -234,6 +234,9 @@ textarea[rows] {
 /* Not allow resize out of parent */
 textarea {
     max-width: 100%;
+    // Make sure textarea takes on height automatically
+    height: auto;
+    min-height: 50px;
 }
 
 /* Add height value for select elements to match text input height */

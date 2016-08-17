@@ -88,13 +88,6 @@ $paragraph-margin-bottom: 1rem;
 $anchor-font-color: $secondary-color;
 $anchor-font-color-hover: $primary-color;
 
-
-.page-wrapper {
-    // We keep browser default (16px) for rem calculations
-    // but set smaller default font for elements inside the page
-    font-size: $paragraph-font-size;
-}
-
 %big-size-1 {
     font-size: $big-font-size-1;
     letter-spacing: -0.015em;
