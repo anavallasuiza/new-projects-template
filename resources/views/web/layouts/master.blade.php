@@ -8,24 +8,27 @@
     </head>
 
     <body id="top" class="@section('body-classes')@show">
+        <a class="accessibility-text-focusable skip-to-content" href="#content">{{ __('Saltar a contenido') }}</a>
 
-            @section('header')
-                @include('web.molecules.header.default')
-            @show
+        @section('header')
+            @include('web.molecules.header.default')
+        @show
 
-            @section('flash')
-                @include('web.atoms.alerts.flash')
-            @show
+        @section('flash')
+            @include('web.atoms.alerts.flash')
+        @show
 
-            @section('errors')
-                @include('web.atoms.alerts.errors')
-            @show
+        @section('errors')
+            @include('web.atoms.alerts.errors')
+        @show
 
+        <div id="content">
             @yield('content')
+        </div>
 
-            @section('footer')
-                @include('web.molecules.footer.default')
-            @show
+        @section('footer')
+            @include('web.molecules.footer.default')
+        @show
 
         {!! HtmlHelper::jsModule('common') !!}
 
