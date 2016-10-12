@@ -1,73 +1,17 @@
-// Alert Boxes
+// Alert-box
 // - - - - - - - - - - - - - - - - - - - - - - - - -
 
-// $include-html-alert-classes: $include-html-classes;
-
-// We use this to control alert padding.
-// $alert-padding-top: rem-calc(14);
-// $alert-padding-default-float: $alert-padding-top;
-// $alert-padding-opposite-direction: $alert-padding-top + rem-calc(10);
-// $alert-padding-bottom: $alert-padding-top;
-
-// We use these to control text style.
-// $alert-font-weight: $font-weight-normal;
-// $alert-font-size: rem-calc(13);
-// $alert-font-color: $white;
-// $alert-font-color-alt: scale-color($secondary-color, $lightness: -66%);
-
-// We use this for close hover effect.
-// $alert-function-factor: -14%;
-
-// We use these to control border styles.
-// $alert-border-style: solid;
-// $alert-border-width: 1px;
-// $alert-border-color: scale-color($primary-color, $lightness: $alert-function-factor);
-// $alert-bottom-margin: rem-calc(20);
-
-// We use these to style the close buttons
-// $alert-close-color: $oil;
-// $alert-close-top: 50%;
-// $alert-close-position: rem-calc(4);
-// $alert-close-font-size: rem-calc(22);
-// $alert-close-opacity: 0.3;
-// $alert-close-opacity-hover: 0.5;
-// $alert-close-padding: 9px 6px 4px;
-
-// We use this to control border radius
-// $alert-radius: $global-radius;
-
-// We use this to control transition effects
-// $alert-transition-speed: 300ms;
-// $alert-transition-ease: ease-out;
-
-
 .alert-outer-wrapper {
-    background: white;
-    border-bottom: 3px solid $primary-color;
-    position: fixed;
-    top: 2.8rem;
-    z-index: 1000;
-    padding-left: $gutter-width;
-    padding-right: $gutter-width;
-    width: 100%;
-    left: 0px;
-    @media screen and (min-width: $viewport-xs) {
-        top: 3.3rem;
-    }
 }
 
 .at-alert-box {
-    @extend %body-size-1;
-    padding: $gutter-width $half-gutter-width;
     position: relative;
-    padding-left: 2.5rem;
-    margin-top: 1.5rem;
-    margin-bottom: 1.5rem;
+
     &:before {
         position: absolute;
         font-size: 2rem;
         left: 0;
-        top: 0.7rem;
+        top: 1rem;
         color: $primary-color;
     }
 

@@ -1,38 +1,5 @@
-// Inline Lists
+// Lists
 // - - - - - - - - - - - - - - - - - - - - - - - - -
-// We use these to style lists
-// $list-font-family: $paragraph-font-family;
-// $list-font-size: $paragraph-font-size;
-// $list-line-height: $paragraph-line-height;
-// $list-margin-bottom: $paragraph-margin-bottom;
-// $list-style-position: outside;
-// $list-side-margin: 1.1rem;
-// $list-ordered-side-margin: 1.4rem;
-// $list-side-margin-no-bullet: 0;
-// $list-nested-margin: rem-calc(20);
-// $definition-list-header-weight: $font-weight-bold;
-// $definition-list-header-margin-bottom: .3rem;
-// $definition-list-margin-bottom: rem-calc(12);
-
-
-// We use this to control the margins and padding of the inline list.
-// $inline-list-top-margin: 0;
-// $inline-list-opposite-margin: 0;
-// $inline-list-bottom-margin: rem-calc(17);
-// $inline-list-default-float-margin: rem-calc(-22);
-// $inline-list-default-float-list-margin: rem-calc(22);
-
-// $inline-list-padding: 0;
-
-// We use this to control the overflow of the inline list.
-// $inline-list-overflow: hidden;
-
-// We use this to control the list items
-// $inline-list-display: block;
-
-// We use this to control any elements within list items
-// $inline-list-children-display: block;
-
 
 %floated-list {
     @extend %clearfix;
@@ -123,6 +90,13 @@
     }
 }
 
+ul,
+ol {
+    li {
+        margin-top: .5em;
+    }
+}
+
 dt,
 dd {
     display: inline;
@@ -131,7 +105,6 @@ dd {
 dt {
     font-weight: $font-weight-bold;
 }
-
 
 dd {
     margin-left: .25em;

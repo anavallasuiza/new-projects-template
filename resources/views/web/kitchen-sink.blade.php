@@ -2,9 +2,7 @@
 
 @section('content')
 
-<div class="kitchen-sink wrapper">
-    <section>
-
+    <div class="kitchen-sink wrapper">
         <h1>This is the primary heading and there should only be one of these per page</h1>
         <p>A small paragraph to <em>emphasis</em> and show <strong>important</strong> bits.</p>
         <ul>
@@ -84,26 +82,33 @@
         <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo.</p>
         <p>
             <button class="button">This is a regular button</button>
-            <button class="button button-alt-1">Boton alternativo 1</button>
+            <button class="button button-secondary">Boton alternativo 1</button>
         </p>
         <div>
             <form action="#" method="post">
                 <div>
-                    <label for="name">Text Input:</label>
-                    <input type="text" name="name" id="name" value="" tabindex="1" />
+                    <label id="label-name" for="name" class="form-label">Nombre</label>
+                    <input id="name" class="form-control" type="text" name="name"
+                           {!!  $errors->has('name') ? 'aria-labelledby="label-name label-name-error"' : ''!!}
+                           placeholder="{{ __('placeholder name') }}" value="{{ old('name') }}"/>
+                    @if($errors->has('name'))
+                        <label id="label-name-error" class="form-message error">
+                            {{ $errors->first('name') }}
+                        </label>
+                    @endif
                 </div>
 
                 <div>
                     <h4>Radio Button Choice</h4>
 
-                    <input type="radio" name="radio-choice-1" id="radio-choice-1" tabindex="2" value="choice-1" />
+                    <input type="radio" name="radio-choice" id="radio-choice-1" value="choice-1" />
                     <label for="radio-choice-1">Choice 1</label>
-                    <input type="radio" name="radio-choice-2" id="radio-choice-2" tabindex="3" value="choice-2" />
+                    <input type="radio" name="radio-choice" id="radio-choice-2" value="choice-2" />
                     <label for="radio-choice-2">Choice 2</label>
                 </div>
 
                 <div>
-                    <label for="select-choice">Select Dropdown Choice:</label>
+                    <label for="select-choice">Select Dropdown:</label>
                     <select name="select-choice" id="select-choice">
                         <option value="Choice 1">Choice 1</option>
                         <option value="Choice 2">Choice 2</option>
@@ -117,8 +122,8 @@
                 </div>
 
                 <div>
-                    <input type="checkbox" name="checkbox" id="checkbox" />
                     <label for="checkbox">Checkbox</label>
+                    <input type="checkbox" name="checkbox" id="checkbox" />
                 </div>
 
                 <div>
@@ -152,36 +157,8 @@
         </div>
         <div>
             <button class="button action-home">This is a regular button</button>
-            <button class="button button-alt-1 action-home">Boton alternativo 1</button>
+            <button class="button button-secondary action-home">Boton alternativo 1</button>
         </div>
-        <p><a href="#" class="action-back">Go back to your seat</a></p>
-    </section>
-    <section class="negative">
-        <p><a href="#" class="action-home">Go back to your Ford Fiesta</a></p>
-        <button class="button button-alt-2 action-home">Boton alternativo 2</button>
-        <h1>This is the primary heading and there should only be one of these per page</h1>
-        <p>A small paragraph to <em>emphasis</em> and show <strong>important</strong> bits.</p>
-        <ul>
-            <li>This is a list item</li>
-            <li>So is this - there could be more</li>
-            <li>Make sure to style list items to:
-                <ul>
-                    <li>Not forgetting child list items</li>
-                    <li>Not forgetting child list items</li>
-                    <li>Not forgetting child list items</li>
-                    <li>Not forgetting child list items</li>
-                </ul>
-            </li>
-            <li>A couple more</li>
-            <li>top level list items</li>
-        </ul>
-        <h2>A sub heading which is not as important as the first, but is quite imporant overall</h2>
-        <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo.</p>
-        <h3>This is the primary heading and there should only be one of these per page</h3>
-        <p>A small paragraph to <em>emphasis</em> and show <strong>important</strong> bits.</p>
-        <h4>A sub heading which is not as important as the first, but is quite imporant overall</h4>
-        <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo.</p>
-    </section>
-</div>
+    </div>
 
 @stop

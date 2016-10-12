@@ -1,136 +1,38 @@
-.action-locate {
-    @extend %icon-marker;
-    @extend %icon-spacing-after;
-}
+// Actions
+// - - - - - - - - - - - - - - - - - - - - - - - - -
 
-.action-go-to-store {
-    @extend %icon-bag;
-    @extend %icon-spacing-after;
-}
 
-.action-subscribe {
-    @extend %icon-arrow-right;
-}
-
-.action-menu-toggle {
-    @extend %icon-menu;
-}
-
-.action-fold {
-    @extend %icon-chevron-thin-left;
-}
-.action-unfold {
-    @extend %icon-chevron-thin-right;
-}
-
-.action-fold-alternate {
-    @extend %icon-square-minus;
-    @extend %icon-spacing-after;
-}
-.action-unfold-alternate {
-    @extend %icon-square-plus;
-    @extend %icon-spacing-after;
-}
-
-.action-geolocate {
-    @extend %icon-move;
-}
 
 .action-search {
-    @extend %icon-search;
-}
-.action-go-to-cart {
-    @extend %icon-bag;
-}
-.action-profile {
-    @extend %icon-head;
 }
 
 .action-logout {
-    @extend %icon-log-out;
-}
-
-.action-see {
-    @extend %icon-eye;
 }
 
 .action-add {
-    @extend %icon-circle-plus;
 }
 
 .action-view-more {
-    @extend %icon-spacing-after;
-    @extend %icon-circle-plus;
+
 }
 
 .action-edit {
-    @extend %icon-edit;
-}
-
-.action-coupons {
-    @extend %icon-tag;
-}
-
-.action-favorites {
-    @extend %icon-heart;
-}
-
-.action-points {
-    @extend %icon-star;
-}
-
-.action-orders {
-    @extend %icon-layers;
 }
 
 .action-close {
-    @extend %icon-cross;
-}
-
-.action-favorite {
-    @extend %icon-heart;
-}
-
-.action-unfavorite {
-    @extend %icon-heart-full;
-}
-
-.action-load-more {
-    @extend %icon-reload;
-}
-
-.action-open {
-    @extend %icon-open;
 }
 
 .action-save {
-    @extend %icon-check;
 }
 
 .action-delete {
-    @extend %icon-trash;
 }
 
 .action-next {
-    @extend %icon;
-    @extend %icon-spacing-before;
-    &:after {
-        content: $icon-var-arrow-right;
-    }
 }
+
 .action-previous {
-    @extend %icon-arrow-left;
-    @extend %icon-spacing-after;
-}
-
-.action-first {
-    @extend %icon-rewind;
-}
-
-.action-last {
-    @extend %icon-fast-forward;
 }
 
 .action-download {
-    @extend %icon-arrow-down;
 }

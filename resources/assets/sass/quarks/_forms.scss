@@ -11,7 +11,7 @@ $form-spacing: rem-calc(16);
 // ##       ######### ##     ## ##       ##       
 // ##       ##     ## ##     ## ##       ##       
 // ######## ##     ## ########  ######## ######## 
-$form-label-font-size: rem-calc(14);
+$form-label-font-size: $paragraph-font-size;
 $form-label-font-weight: $font-weight-bold;
 $form-label-line-height: 1.5;
 $form-label-font-color: $body-font-color;
@@ -26,50 +26,50 @@ $form-label-font-color: $body-font-color;
 // #### ##    ## ##         #######     ##     ######  
 
 $input-font-color: $body-font-color;
-$input-font-size: rem-calc(14);
+$input-font-size: $paragraph-font-size;
 $input-bg-color: white;
 $input-focus-bg-color: shade($input-bg-color, 5%);
-$input-border-color: transparent;
+$input-border-color: $body-font-color;
 $input-focus-border-color: $primary-color;
 $input-border-style: solid;
-$input-border-width: 2px;
+$input-border-width: 1px;
 $input-border-radius: 0;
 $input-disabled-bg: $gray9;
 $input-box-shadow: inset 0 0 2px rgba(0,0,0,0.1);
 
-// ######## #### ######## ##       ########   ######  ######## ########  ######
-// ##        ##  ##       ##       ##     ## ##    ## ##          ##    ##    ##
-// ##        ##  ##       ##       ##     ## ##       ##          ##    ##
-// ######    ##  ######   ##       ##     ##  ######  ######      ##     ######
-// ##        ##  ##       ##       ##     ##       ## ##          ##          ##
-// ##        ##  ##       ##       ##     ## ##    ## ##          ##    ##    ##
-// ##       #### ######## ######## ########   ######  ########    ##     ######
+// ######## #### ######## ##       ########   ######  ######## ########  ######  
+// ##        ##  ##       ##       ##     ## ##    ## ##          ##    ##    ## 
+// ##        ##  ##       ##       ##     ## ##       ##          ##    ##       
+// ######    ##  ######   ##       ##     ##  ######  ######      ##     ######  
+// ##        ##  ##       ##       ##     ##       ## ##          ##          ## 
+// ##        ##  ##       ##       ##     ## ##    ## ##          ##    ##    ## 
+// ##       #### ######## ######## ########   ######  ########    ##     ######  
 $fieldset-border-style: solid;
 $fieldset-border-width: 1px;
 $fieldset-border-color: $gray7;
 $fieldset-padding: 0 0;
-$fieldset-margin: 0 0 $paragraph-margin-bottom;
+$fieldset-margin: 0 0 $paragraph-margin;
 
 
-// ##       ########  ######   ######## ##    ## ########   ######
-// ##       ##       ##    ##  ##       ###   ## ##     ## ##    ##
-// ##       ##       ##        ##       ####  ## ##     ## ##
-// ##       ######   ##   #### ######   ## ## ## ##     ##  ######
-// ##       ##       ##    ##  ##       ##  #### ##     ##       ##
-// ##       ##       ##    ##  ##       ##   ### ##     ## ##    ##
-// ######## ########  ######   ######## ##    ## ########   ######
+// ##       ########  ######   ######## ##    ## ########   ######  
+// ##       ##       ##    ##  ##       ###   ## ##     ## ##    ## 
+// ##       ##       ##        ##       ####  ## ##     ## ##       
+// ##       ######   ##   #### ######   ## ## ## ##     ##  ######  
+// ##       ##       ##    ##  ##       ##  #### ##     ##       ## 
+// ##       ##       ##    ##  ##       ##   ### ##     ## ##    ## 
+// ######## ########  ######   ######## ##    ## ########   ######  
 $legend-bg: transparent;
 $legend-font-weight: $font-weight-normal;
 // $legend-padding: rem-calc(0 3);
 
 
-// ######## ########  ########   #######  ########     ##     ## ########  ######   ######     ###     ######   ########  ######
-// ##       ##     ## ##     ## ##     ## ##     ##    ###   ### ##       ##    ## ##    ##   ## ##   ##    ##  ##       ##    ##
-// ##       ##     ## ##     ## ##     ## ##     ##    #### #### ##       ##       ##        ##   ##  ##        ##       ##
-// ######   ########  ########  ##     ## ########     ## ### ## ######    ######   ######  ##     ## ##   #### ######    ######
-// ##       ##   ##   ##   ##   ##     ## ##   ##      ##     ## ##             ##       ## ######### ##    ##  ##             ##
-// ##       ##    ##  ##    ##  ##     ## ##    ##     ##     ## ##       ##    ## ##    ## ##     ## ##    ##  ##       ##    ##
-// ######## ##     ## ##     ##  #######  ##     ##    ##     ## ########  ######   ######  ##     ##  ######   ########  ######
+// ######## ########  ########   #######  ########     ##     ## ########  ######   ######     ###     ######   ########  ######  
+// ##       ##     ## ##     ## ##     ## ##     ##    ###   ### ##       ##    ## ##    ##   ## ##   ##    ##  ##       ##    ## 
+// ##       ##     ## ##     ## ##     ## ##     ##    #### #### ##       ##       ##        ##   ##  ##        ##       ##       
+// ######   ########  ########  ##     ## ########     ## ### ## ######    ######   ######  ##     ## ##   #### ######    ######  
+// ##       ##   ##   ##   ##   ##     ## ##   ##      ##     ## ##             ##       ## ######### ##    ##  ##             ## 
+// ##       ##    ##  ##    ##  ##     ## ##    ##     ##     ## ##       ##    ## ##    ## ##     ## ##    ##  ##       ##    ## 
+// ######## ##     ## ##     ##  #######  ##     ##    ##     ## ########  ######   ######  ##     ##  ######   ########  ######  
 
 // $input-error-message-padding: rem-calc(6 9 9);
 // $input-error-message-top: -1px;
@@ -80,13 +80,13 @@ $legend-font-weight: $font-weight-normal;
 // $input-error-message-font-color-alt: $oil;
 
 
-//  ######  ######## ##       ########  ######  ########  ######
-// ##    ## ##       ##       ##       ##    ##    ##    ##    ##
-// ##       ##       ##       ##       ##          ##    ##
-//  ######  ######   ##       ######   ##          ##     ######
-//       ## ##       ##       ##       ##          ##          ##
-// ##    ## ##       ##       ##       ##    ##    ##    ##    ##
-//  ######  ######## ######## ########  ######     ##     ######
+//  ######  ######## ##       ########  ######  ########  ######  
+// ##    ## ##       ##       ##       ##    ##    ##    ##    ## 
+// ##       ##       ##       ##       ##          ##    ##       
+//  ######  ######   ##       ######   ##          ##     ######  
+//       ## ##       ##       ##       ##          ##          ## 
+// ##    ## ##       ##       ##       ##    ##    ##    ##    ## 
+//  ######  ######## ######## ########  ######     ##     ######  
 $select-bg-color: $input-bg-color;
 $select-hover-bg-color: scale-color($select-bg-color, $lightness: -3%);
 
@@ -96,7 +96,6 @@ $select-hover-bg-color: scale-color($select-bg-color, $lightness: -3%);
 //
 // We use this mixin to give all basic form elements their style
 @mixin form-element {
-    @extend %gradient-border;
     background-color: $input-bg-color;
     border: {
         style: $input-border-style;
@@ -136,8 +135,6 @@ $select-hover-bg-color: scale-color($select-bg-color, $lightness: -3%);
     -webkit-appearance: none !important;
     border-radius: 0;
     background-color: $select-bg-color;
-
-    @extend %gradient-border;
 
     // Hide the dropdown arrow shown in newer IE versions
     &::-ms-expand {
@@ -245,13 +242,17 @@ textarea {
 /* Add height value for select elements to match text input height */
 select {
     @include form-select;
-    padding: 0.3rem 1.2rem 0.3rem 0.3rem;
+    padding: 0.3rem 2rem 0.3rem 0.3rem;
     border-radius: $input-border-radius;
     -moz-appearance: none;
     -moz-user-select: none;
     height: ($input-font-size + ($form-spacing * 1.5) - rem-calc(1));
     &:focus {
         box-shadow: $input-box-shadow;
+    }
+    option {
+        margin-top: 0;
+        margin-bottom: 0;
     }
 }
 
@@ -288,6 +289,7 @@ label,
 .form-label {
     @include form-label;
     font-weight: $font-weight-normal;
+    color: $primary-color;
     font-size: 1rem;
 }
 
@@ -307,11 +309,6 @@ label,
     color: $primary-color;
 }
 
-.form-subtitle {
-    font-family: $header-font-family;
-    color: $primary-color;
-}
-
 .form-group-wrapper {
     @extend %row;
     flex-wrap: nowrap;
@@ -328,17 +325,12 @@ label,
     @media screen and (max-width: $viewport-sm) {
         flex-wrap: wrap;
     }
-
-    &.form-group-wrapper-3-col {
-        .form-group {
-            flex: 1 1 0;
-        }
-    }
 }
 
 .form-group-check-wrapper {
     margin-top: 1.5rem;
 }
+
 
 // Required automaticos
 input,
@@ -361,7 +353,6 @@ textarea {
         }
     }
 }
-
 
 .form-group {
     margin-bottom: .5rem;
@@ -415,9 +406,10 @@ textarea {
     }
 }
 
-.has-related,
-.has-related .form-group {
-    margin-bottom: 0;
+.selectize-input {
+    input[type=text] {
+        height: auto;
+    }
 }
 
 
@@ -601,12 +593,11 @@ input[type="range"] {
 }
 
 
-input[type=checkbox],
-input[type=radio]{
+.checkbox {
     @extend %choice;
-    @include choice-state-styles(transparent, transparent, transparent, $input-font-color, $input-font-color, $input-font-color);
-    @include choice-pre-state-styles(transparent, transparent, transparent, $input-font-color, rgba($input-font-color, .5), $primary-color);
-    @include choice-pre-icon($icon-var-circle-o, .8rem, $icon-var-check-circle);
+    @include choice-state-styles(transparent, transparent, transparent, $primary-color, $primary-color, $primary-color);
+    @include choice-pre-state-styles(transparent, transparent, transparent, $primary-color, $primary-color, $primary-color);
+    @include choice-pre-icon($icon-var-stop, .8rem, $icon-var-check);
     + label {
         font-size: 0.9rem;
         margin-left: 0!important;
