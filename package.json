@@ -22,5 +22,8 @@
     "merge-stream": "^1.0.0",
     "sizzle": "^2.3.0",
     "webpack": "^1.12.4"
+  },
+  "dependencies": {
+    "gulp-rimraf": "^0.2.0"
   }
 }

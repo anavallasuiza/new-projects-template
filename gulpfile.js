@@ -4,7 +4,7 @@ const fs = require('fs');
 const gulp = require('gulp');
 const gutil = require('gulp-util');
 const merge = require('merge');
-const del = require('del');
+const rimraf = require('gulp-rimraf');
 const mergeStream = require('merge-stream');
 const sass = require('gulp-sass');
 const rename = require('gulp-rename');
@@ -57,7 +57,10 @@ const icoFontsToMove = {
 };
 
 gulp.task('clean:fonts', function() {
-    return del(publicFolders.fonts);
+    return gulp.src(publicFolders.fonts, {
+        read: false
+    })
+        .pipe(rimraf());
 });
 
 gulp.task('copy:fonts', ['clean:fonts'], function() {
@@ -89,20 +92,6 @@ gulp.task('fonts', ['copy:fonts'], function() {
 });
 
 
-const cssToSass = {
-    input: 'resources/assets/web_modules/normalize-css/normalize.css',
-    output: 'resources/assets/sass/utilities/'
-};
-
-gulp.task('cssToSass', function() {
-    return gulp.src(cssToSass.input)
-        .pipe(rename(function (path) {
-            path.basename = "_" + path.basename;
-            path.extname = ".scss"
-        }))
-        .pipe(gulp.dest(cssToSass.output));
-});
-
 
 /**
  * CSS
@@ -131,11 +120,29 @@ const styleCowOptions = {
 };
 
 gulp.task('clean:css', function() {
-    return del(publicFolders.css);
+    return gulp.src(publicFolders.css, {
+        read: false
+    })
+        .pipe(rimraf());
 });
 
 
-gulp.task('css:dev', ['fonts', 'cssToSass', 'clean:css'], function() {
+const cssToSass = {
+    input: 'resources/assets/web_modules/normalize-css/normalize.css',
+    output: 'resources/assets/sass/utilities/'
+};
+
+gulp.task('cssToSass', ['clean:css'], function() {
+    return gulp.src(cssToSass.input)
+        .pipe(rename(function(path) {
+            path.basename = '_' + path.basename;
+            path.extname = '.scss';
+        }))
+        .pipe(gulp.dest(cssToSass.output));
+});
+
+
+gulp.task('css:dev', ['cssToSass'], function() {
     return gulp.src(styleToProcess.input)
         .pipe(sourcemaps.init())
         .pipe(sass().on('error', sass.logError))
@@ -147,7 +154,7 @@ gulp.task('css:dev', ['fonts', 'cssToSass', 'clean:css'], function() {
         .pipe(browserSync.stream());
 });
 
-gulp.task('css:prod', ['fonts','cssToSass', 'clean:css'], function() {
+gulp.task('css:prod', ['cssToSass'], function() {
     return gulp.src(styleToProcess.input)
         .pipe(sass().on('error', sass.logError))
         .pipe(stylecow(merge({}, styleCowOptions, {
@@ -165,9 +172,11 @@ const imagesToProcess = {
     output: 'public/assets/web/img'
 };
 
-
 gulp.task('clean:img', function() {
-    return del(publicFolders.img);
+    return gulp.src(publicFolders.img, {
+        read: false
+    })
+        .pipe(rimraf());
 });
 
 gulp.task('images', ['clean:img'], function() {
@@ -206,7 +215,10 @@ gulp.task('dev-server', function() {
  * Js
  */
 gulp.task('clean:js', function() {
-    return del(publicFolders.js);
+    return gulp.src(publicFolders.js, {
+        read: false
+    })
+        .pipe(rimraf());
 });
 
 gulp.task('webpack:prod', ['clean:js'], function(callback) {
@@ -281,9 +293,9 @@ gulp.task('webpack:watch', ['webpack:dev'], function() {
 /**
  * Development task
  */
-gulp.task('dev',['images', 'css:dev', 'clean:js', 'webpack:dev', 'dev-server']);
+gulp.task('dev', ['images', 'fonts', 'css:dev', 'clean:js', 'webpack:dev', 'dev-server']);
 
 /**
  * Default task
  */
-gulp.task('default', ['images', 'css:prod', 'webpack:prod']);
+gulp.task('default', ['images', 'fonts', 'css:prod', 'webpack:prod']);
